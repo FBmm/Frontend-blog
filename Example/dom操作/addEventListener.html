@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent" onclick="parentClick()">
+        <div id="child" onclick="childClick()">
+            <div id="grandson" onclick="grandsonClick()">F12后，请点击...</div>
+        </div>
+    </div>
+    <script>
+        // addEventListener 第三个参数为 true 事件在捕获阶段（目标事件之前执行）
+        // 因为dom是根节点、所以 document 比 parent 先执行 
+        document.addEventListener('click', function() {
+            console.log('document listener click');
+        }, true)
+        document.getElementById('parent').addEventListener('click', function() {
+            console.log('parent listener click');
+        }, true)
+        // 第三个参数为false 在冒泡阶段执行
+        document.getElementById('child').addEventListener('click', function() {
+            console.log('child listener click');
+        }, false)
+        // 元素原生的 onclick 事件比 js 监听的事件先执行
+        document.getElementById('grandson').addEventListener('click', function() {
+            console.log('grandson listener click');
+        }, false)
+        function parentClick() {
+            console.log('parent click');
+        }
+        function childClick() {
+            console.log('child click');
+        }
+        // 元素原生的 onclick 事件比 js 监听的事件先执行
+        function grandsonClick() {
+            console.log('grandson click');
+        }
+        // 依次输出：
+        // document listener click
+        // parent listener click
+        // grandson click
+        // grandson listener click
+        // child click
+        // child listener click
+        // parent click
+    </script>
+</body>
+</html>

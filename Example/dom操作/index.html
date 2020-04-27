@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 这是注释 -->
+  <div id="wrap">
+    <h1>标题</h1>
+    <h2>标题</h2>
+    <p>内容</p><p>内容</p>
+  </div>
+  <input type="text" id="input">
+  <input type="text" id="input2">
+  <button onclick="testFn()">test</button>
+  <script>
+    function testFn() {
+      console.log('test', document.activeElement.tagName)
+    }
+    function l(v) {
+      console.log(v);
+    }
+    const dom = document.getElementById('wrap');
+    const input = document.getElementById('input');
+    const input2 = document.getElementById('input');
+    l(dom.childNodes)
+    l(document.URL)
+    l(document.documentElement)
+    l(document.lastModified)
+    l(dom.tabIndex)
+    l(input.tabIndex)
+    l(input2.tabIndex)
+    var a = {a: 1, b :2}
+    console.table(a);
+  </script>
+</body>
+
+</html>

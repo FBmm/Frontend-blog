@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="pa">
+    这是字符串
+    <p>这是p</p>
+  </div>
+  <script>
+    /**
+     * 遍历html元素，替换子节点中的文本为p元素
+     */
+    const parent = document.getElementById('pa');
+    console.log(parent)
+    parent.childNodes.forEach(item => {
+      if (item.nodeName === '#text') {
+        const el = document.createElement('p')
+        el.innerHTML = '1231321';
+        item.replaceWith(el)
+      }
+    })
+    console.log(parent)
+  </script>
+</body>
+</html>

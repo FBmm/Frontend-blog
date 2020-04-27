@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则test</title>
+</head>
+<body>
+    <div>
+        字符串：<input type="text" name="" id="str" style="width: 500px;">
+        正则表达式：<input type="text" name="" id="reg" style="width: 500px;">
+    </div>
+    <br />
+    <div>
+        <button onclick="testFn()" style="width: 100px;">test</button> test结果：<span id="testResult"></span>
+    </div>
+    <script>
+        function testFn() {
+            const strVal = document.getElementById('str').value;
+            const regVal = document.getElementById('reg').value;
+            if (!strVal || !regVal) return;
+            try {
+                document.getElementById('testResult').innerText = eval(regVal).test(strVal);
+            } catch (error) {
+                console.log('正则表达式格式有误')               
+            }
+        }
+        document.addEventListener('keyup', (e) => {
+            if (e.keyCode === 13) {
+                testFn()
+            }
+        })
+    </script>
+</body>
+</html>

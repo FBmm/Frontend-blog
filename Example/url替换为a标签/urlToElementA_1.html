@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>汇总</title>
+</head>
+<body>
+    <!-- 把两者方法汇总展示 -->
+    <!-- 把两者方法汇总展示 -->
+    <!-- 把两者方法汇总展示 -->
+    <div id="wrap">
+        <h1>标题</h1>
+        <p>这是内容，这是内容，这是内容，这是内容。</p>
+        <p>https://www.baidu.com 第二种替换方式测试</p> 
+        <p>[www.baidu.com]  第一种替换方式测试</p>
+        <p>www.baidu.comwwww.baidu.com </p>
+        <p>1.2</p>
+        <p> <span style="width: 10%;">10%</span></p>
+    </div>
+    第一种：<button onclick="replaceAll(method_1)">替换方式1</button> 替换所有链接
+    <br />
+    <br />
+    第二种：<button onclick="replaceAll(method_2)">替换方式2</button> 替换固定格式内的链接 [www.baidu.com]
+    <script>
+        // 这个正则会转换无http协议的链接 
+        // 比如 www.baidu.com、a.bbb、1.123121 这种存在在实际应用中会出现bug
+        // 比如将上面的1.2转成a标签
+        // 在项目中则是出现将表格样式部分转成了a标签 页面乱码的问题
+        const REG_1 = /((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g;
+        
+        // 所以实际开发中如果有前端转换的需求 建议强制匹配以http或https开头的url 则正则如下
+        const REG = /https?:\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g;
+        
+        // 如果产品必须要求转换任何url 则建议设置url格式 类似markdown语法 比如可以设置url的固定格式是 [url]
+        // 那么正则如下
+        const REG_URL =  /^\[((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?]$/g;
+        
+        const method_1 = {
+            reg: REG,
+            fn: urlToHtmlElA_custom,
+        }
+        
+        const method_2 = {
+            reg: REG_URL,
+            fn: urlToHtmlElA_format,
+        }
+
+        let domCopy;
+        
+        // url 转 a 标签测试
+        function test() {
+            var  str = "2131asdhttps://tool.oschina.net/regex撒大声地打算 阿达";
+            var n = str.replace(REG, (a) => {
+                return `<a href="${a}" target="_blank">${a}</a>`
+            });
+            console.log(n);
+        }
+        // test();
+
+        // 第一种替换方式
+        function urlToHtmlElA_custom(str) {
+            return str.replace(REG, (a) => {
+                 return `<a href="${a}" target="_blank">${a}</a>`
+                 // replace('&nbsp;','') 去空格 避免链接中生成无效&nbsp;
+                 return `<a href="${a.replace('&nbsp;','')}" target="_blank">${a}</a>`
+             });
+        }
+
+        // 第二种替换方式
+        function urlToHtmlElA_format(str) {
+            console.log(str)
+             // /^\[|\]$/g 去掉链接首尾的[]
+            return `<a href="${str.replace(/^\[|\]$/g, '')}" target="_blank">${str.replace(/^\[|\]$/g, '')}</a>`
+        }
+
+        // 获取页面所有的 url 替换为 a标签 
+        function replaceAll(method) {
+            console.log(method)
+            let dom;
+            if (domCopy) {
+                dom = domCopy.cloneNode(true);
+                console.log(dom === domCopy)
+            } else {
+                dom = document.getElementById('wrap')
+                domCopy = dom.cloneNode(true);
+            }
+            // console.log(dom.childNodes)
+            dom.childNodes.forEach(item => {
+                // console.log(item)
+                // !item.innerHTML.includes('↵')：加这个判断主要是为了性能优化，每个换行的html元素都会生成 '↵ ' 文本表示换行
+                if (item.innerHTML && method.reg.test(item.innerHTML) && !item.innerHTML.includes('↵')) {
+                    debugger
+                    item.innerHTML = method.fn(item.innerHTML)
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
