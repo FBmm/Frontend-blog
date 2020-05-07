@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伪类</title>
+  <style>
+    /** 
+     * 伪类设置样式时要保证顺序 link -> visited -> hover -> active 顺序
+     * 否则由于优先级问题样式将会被覆盖
+     * 如果无法保证上面顺序 可以通过 !important 设置优先级
+     */
+    /** 
+     * 这样方式则 hover 生效
+     * .link:hover {
+     *   color: darkorange !important;
+     * } 
+     */
+    .link:link {
+      color: red;
+    }
+    .link:visited {
+      color: chartreuse;
+    }
+    .link:hover {
+      color: darkorange !important;
+    }
+    .link:active {
+      color: mediumturquoise;
+    }
+  </style>
+</head>
+<body>
+  <a class="link" href="http://www.baidu.com">百度</a>
+</body>
+</html>
