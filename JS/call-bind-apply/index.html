@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // js 实现 call
+    const ob1 = {
+      a: 1
+    }
+    function a() {
+      console.log('a', this)
+    }
+    Function.prototype.myCall = function (that) {
+      that.fn = this
+      that.fn()
+      delete that.fn
+    }
+    a.myCall(ob1)
+  </script>
+</body>
+</html>
