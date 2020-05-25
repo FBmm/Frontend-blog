@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首选最小宽度</title>
+  <style>
+    .box {
+      width: 0;
+    }
+    .content {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 如果外层盒子宽度为0，元素盒子的内容有最小宽度 -->
+  <!-- 中文是一个汉字宽度 -->
+  <div class="box">
+    <div class="content">这是中文内容</div>
+  </div>
+  <!-- 英文是一个连续的英文字符宽度 -->
+  <div class="box">
+    <div class="content">this is English</div>
+  </div>
+
+  <div>
+    <p>如果外层盒子宽度为0，元素盒子的内容有最小宽度</p>
+    <p>中文是一个汉字宽度</p>
+    <p>英文是一个连续的英文字符宽度</p>
+  </div>
+</body>
+</html>
