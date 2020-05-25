@@ -89,3 +89,33 @@ let y = 2;
 4. 提取 JSON 数据
 5. 函数参数的默认值
 6. 模块变量赋值
+
+### 箭头函数
+
+- 箭头函数内部的this，是定义是所在的对象，而不是使用时所在的对象
+  - 普通函数this可变
+  - 箭头函数this是固定的
+  - 箭头函数不能用call()、apply()、bind()
+- 不可以当做构造函数（new）
+- 不可以使用arguments对象，函数体内不存在这个对象，但可以用rest参数代替
+- 不可以使用yield命令，因此不能用作Generator函数
+
+箭头函数转换成ES5
+
+```js
+// es6
+function fn() {
+  setTimeout(() => {
+    console.log(this.name)
+  }, 1000)
+}
+
+// es5 箭头函数没有自己的this 而是引用外层的this
+function fn() {
+  var _this = this
+  setTimeout(() => {
+    console.log(_this.name)
+  }, 1000)
+}
+```
+
