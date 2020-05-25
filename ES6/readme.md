@@ -119,3 +119,22 @@ function fn() {
 }
 ```
 
+### 数组扩展
+
+- 扩展运算符 ...
+  - 类似于 rest 参数的逆运算
+  - 可以将数组转换为用逗号分隔的参数序列
+  - 数组浅拷贝 `[...array]`
+  - 复制数组
+  - 合并数组
+  - 数组空位会转换为undefined ` console.log(...[1,,2]) // 1 undefined 2 `
+- flat
+  - flat() 只拉平一层
+  - flat(n) 拉平n层
+  - flat(Infinity) 拉平任何层嵌套
+  - 有空位会跳过
+- flatMap
+  - 等于 map flat 组合，先对所有项执行map方法，然后对所有返回值组成的数组执行flat()，返回一个新数组
+  - 只能展开一层
+  - 第一个参数是函数，第二参数是遍历绑定的this
+- ES6会将数组空位转为undefined
