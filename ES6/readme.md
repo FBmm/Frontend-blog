@@ -148,5 +148,21 @@ function fn() {
   - 使得数据结构的成员可以按某种次序排列
   - 主要提供for...of遍历消费
 
-- for...of 可遍历 Array Set Map、不可遍历 Object
+- 原生具备 Iterator 接口的数据结构、for...of 可遍历
+  - Array
+  - Map
+  - Set
+  - String
+  - TypedArray
+  - 函数的 arguments 对象
+  - NodeList 对象
 
+- 原生不具备 Iterator 接口的数据结构、for...of 无法遍历
+  - 对象Object
+
+为什么对象Object没有Iterator 接口或者 for...of 无法遍历？
+
+1. 由于对象无法保证遍历顺序
+2. Iterator遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历接口等于是一种线性转换
+
+### Generator
