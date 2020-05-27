@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>textarea-display问题</title>
+  <style>
+    /* display: block 并不能使textarea的宽度100%适应父容器 */
+    #textarea {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <textarea name="test" id="textarea" cols="30" rows="10"></textarea>
+</body>
+</html>
