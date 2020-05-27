@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>height-100%测试</title>
+  <style>
+    /* body {
+      height: 700px;
+    } */
+    .parent {
+      background-color: #999;
+      /* height: 600px; */
+      background: #000;
+    }
+    .top {
+      height: 300px;
+      background: red;
+    }
+    .child {
+      height: 100%; /* 如果父元素无具体高度 则无效且只会依赖父级 */
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="top"></div>
+    <div class="child"></div>
+  </div>
+</body>
+</html>
