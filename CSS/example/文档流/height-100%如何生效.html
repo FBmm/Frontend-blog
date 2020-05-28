@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>height-100%如何生效</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 300px;
+      padding: 20px;
+      background: black;
+      position: relative;
+    }
+    .c2 {
+      height: 100%;
+      background: green;
+    }
+
+    .c3 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="c2"></div>
+  </div>
+  <p>非绝对定位<b>宽高百分比</b>计算是相对 content-box 不计算父padding 所以绿色盒子高度是：300px</p>
+  <div class="box">
+    <div class="c3"></div>
+  </div>
+  <p>绝对定位height: 100% 百分比计算是相对 padding-box 会计算父盒子padding 所以绿色盒子高度是：340px</p>
+  <p>width 百分比也是相对 padding-box</p>
+</body>
+</html>
