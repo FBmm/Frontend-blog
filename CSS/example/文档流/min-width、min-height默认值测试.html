@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>min-width、min-height默认值测试</title>
+  <style>
+    .box {
+      width: 200px;
+      background: burlywood;
+      transition: min-height .3s;
+    }
+    .parent:hover .box{
+      min-height: 200px;
+    }
+    .box1 {
+      width: 200px;
+      min-height: 0;
+      background: burlywood;
+      transition: min-height .3s;
+    }
+    .parent:hover .box1{
+      min-height: 200px;
+    }
+    .parent {
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    鼠标移入测试 min-height 为默认值 - 无动画效果
+    <div class="box"></div>
+  </div>
+  <div class="parent">
+    鼠标移入测试 min-height 为 0 - 有动画效果
+    <div class="box1"></div>
+  </div>
+  <p>所以min-height的默认值不是0 而应是auto</p>
+</body>
+</html>
