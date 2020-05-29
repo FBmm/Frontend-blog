@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行框盒子（line-box）开始的空白节点</title>
+  <style>
+    span {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 这里div的height为21px -->
+  <div><span></span></div>
+  <pre>
+    在 HTML5 文档声明中，
+    内联元素的所有解析和渲染表现就如同每个行框盒子的前面有一个“空白节点”一样。
+    这个“空白节点”永远透明，不占据任何宽度，看不见也无法通过脚本获取，就好像幽灵一样，
+    但又确确实实地存在，表现如同文本节点一样，因此，称之为“幽灵空白节点”。
+  </pre>
+
+  <p>规范原文：Each line box starts with a zero-width inline box with the element’s font and line
+    height properties. We call that imaginary box a “strut”.</p>
+</body>
+</html>
