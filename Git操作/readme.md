@@ -55,14 +55,14 @@ git init
 指定的提交commit应用于其他分支
 
 - 转移一个提交
-    - git cherry-pick <commitHash> 将指定的提交commitHash，应用于当前分支，然后在当前分支产生一个新提交，哈希值会不一样
+    - git cherry-pick [commitHash] 将指定的提交commitHash，应用于当前分支，然后在当前分支产生一个新提交，哈希值会不一样
         - git cherry-pick 734f4cc23195e6efc4d500c8526eb946ca9a4e48
-    - git cherry-pick <feature> 将指定分支最近一次提交转移到当前分支
+    - git cherry-pick [feature] 将指定分支最近一次提交转移到当前分支
         - git cherry-pick feature
 - 转移多个提交
-    - git cherry-pick <HashA> <HashB>
-    - git cherry-pick <HashA>..<HashB> 转移(HashA,HashB]之间的提交，不包含HashA
-    - git cherry-pick <HashA>^..<HashB> 转移[HashA,HashB]之间的提交，包含HashA
+    - git cherry-pick [HashA] [HashB]
+    - git cherry-pick [HashA]..[HashB] 转移(HashA,HashB]之间的提交，不包含HashA
+    - git cherry-pick [HashA]^..[HashB] 转移[HashA,HashB]之间的提交，包含HashA
 - 配置项
     - -e\--edit 编辑提交时的log信息
     - -n\--no-commit 暂存不提交
@@ -76,7 +76,7 @@ git init
         - git cherry-pick --abort
     - --quit 发生代码冲突后，退出 Cherry pick，但是不回到操作前的样子
         - git cherry-pick --quit
-        
+
 ### git stash
 
 stash命令可用于跨分支临时的保存和恢复本地修改
