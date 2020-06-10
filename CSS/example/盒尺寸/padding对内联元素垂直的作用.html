@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=s, initial-scale=1.0">
+  <title>padding对内联元素垂直的作用</title>
+  <style>
+    .sp1 {
+      padding: 50px;
+    }
+    .box2 {
+      line-height: 30px;
+    }
+    .sp2 {
+      padding: 50px;
+    }
+    .box3 {
+      width: 100px;
+    }
+    .box3 div {
+      padding: 50%;
+      background: chocolate;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <span class="sp1">内容1</span>
+  </div>
+  <div class="box2">
+    <span class="sp2">内容2</span>
+  </div>
+  <div class="box3">
+    <div></div>
+  </div>
+</body>
+</html>
