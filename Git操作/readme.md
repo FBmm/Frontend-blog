@@ -45,11 +45,19 @@ mkdir git-test & cd git-test
 git init
 ```
 
-
 - 提示 'Initialized empty Git repository in D:/_my/git-test/.git/' 表示创建成功
 
 ## git 命令
 
+### git log
+
+    - git log
+    - git log --stat 显示提交历史遗迹每次commit发生变化的文件
+    - git log -5 --pretty --oneline 简化Hash签名
+    - git log -5 --pretty=oneline 完整Hash签名
+    - git shortlog -sn 显示所有提交过的用户 按次数排序
+    - git reflog 显示当前分支的操作记录
+    
 ### git cherry-pick
 
 指定的提交commit应用于其他分支
@@ -59,6 +67,7 @@ git init
         - git cherry-pick 734f4cc23195e6efc4d500c8526eb946ca9a4e48
     - git cherry-pick [feature] 将指定分支最近一次提交转移到当前分支
         - git cherry-pick feature
+        
 - 转移多个提交
     - git cherry-pick [HashA] [HashB]
     - git cherry-pick [HashA]..[HashB] 转移(HashA,HashB]之间的提交，不包含HashA
