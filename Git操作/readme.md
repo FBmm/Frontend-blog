@@ -57,7 +57,7 @@ git init
     - git log -5 --pretty=oneline 完整Hash签名
     - git shortlog -sn 显示所有提交过的用户 按次数排序
     - git reflog 显示当前分支的操作记录
-    
+
 ### git cherry-pick
 
 指定的提交commit应用于其他分支
@@ -118,10 +118,17 @@ stash命令可用于跨分支临时的保存和恢复本地修改
 - git stash clear
     删除所有
 
-## 新建代码库
+### git config
+
+- git config --list 查看当前项目配置
+- git config [--global] user.name "[name]"  // 设置提交代码时的用户名
+- git config [--global] user.email "[email address]"  // 设置提交代码时的邮箱
+
+### 代码仓库命令
+
 ```git
 # 在当前目录新建一个Git代码库
-git init 
+git init
 
 # 新建一个目录，将其初始化为Git代码库
 git init [project-name]
@@ -130,17 +137,8 @@ git init [project-name]
 git clone [url]
 ```
 
-## 配置
-```git
-# 查看当前项目配置
-git config --list
+### 添加暂存文件
 
-# 设置提交代码时的用户信息
-git config [--global] user.name "[name]"  // 用户名
-git config [--global] user.email "[email address]"  // 邮箱
-```
-
-## 添加暂存文件
 ```git
 # git add之前最好执行git status
 #查看当前项目更改状态
@@ -157,7 +155,8 @@ git add [文件1] [文件2] ...
 $ git add .
 ```
 
-## 分支
+### 分支
+
 ```git
 # 列出所有本地分支
 git branch
@@ -189,13 +188,15 @@ $ git push origin --delete [分支名]
 $ git push origin : [分支名]
 ```
 
-## 添加远程仓库
+### 添加远程仓库
+
 ```git
 # 为目标远程仓库建立指引(取别名 )
 git remote add [别名] [远端仓库url] // git remote add dfv [远端url]  (注：dfv 为别名 表示这个远端地址) 
 ```
 
-## 更新代码
+### 更新代码
+
 ```git
 # 实际开发中最好每次提交代码前更新代码
 
@@ -208,7 +209,8 @@ git pull origin master  // 此处 origin 表示远程仓库地址
 git pull [远端地址\别名] [分支名]  // git pull dfv br_feature
 ```
 
-## 代码提交
+### 代码提交
+
 ```git
 # 提交暂存区的代码到仓库
 git commit -m [注释]
