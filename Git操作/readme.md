@@ -67,7 +67,6 @@ git init
         - git cherry-pick 734f4cc23195e6efc4d500c8526eb946ca9a4e48
     - git cherry-pick [feature] 将指定分支最近一次提交转移到当前分支
         - git cherry-pick feature
-        
 - 转移多个提交
     - git cherry-pick [HashA] [HashB]
     - git cherry-pick [HashA]..[HashB] 转移(HashA,HashB]之间的提交，不包含HashA
@@ -96,7 +95,7 @@ stash命令可用于跨分支临时的保存和恢复本地修改
 > - 第一种办法：本地新拉 hotfix 分支，这样就 develop 修改的内容将不会被影响。但是实际开发中 我们从新拉分到安装依赖，在到启动项目将耗费大量时间。
 > - 第二种办法：使用 git stash 将 develop 分支的修改记录保存下来，切换至hotfix分支，完成线上问题的修改。然后回到 develop 分恢复保存的记录。
 
-- git stash [save message]
+- git stash save [message]
     - git stash
     默认保存
     - git stash save 'message'
@@ -150,7 +149,7 @@ git add *
 # 暂存指定文件
 git add [文件名]
 git add [文件1] [文件2] ...
- 
+
 # 添加当前目录的所有文件到暂存区
 $ git add .
 ```
