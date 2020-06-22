@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>float特性</title>
+  <style>
+    .parent { width: 200px; }
+    .float { float: left }
+    .demo1,.demo2 img { width: 128px }
+    .clearfix:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <!-- 包裹性 -->
+  <div class="parent demo1 clearfix">
+    <div class="float">
+      <img src="img-1.png">
+    </div>
+  </div>
+
+  <!-- 自适应性 -->
+  <div class="parent demo2 clearfix">
+    <div class="float">
+      <img src="img-1.png">x我是帅哥，好巧啊x，我也是帅哥，原来看这本书的人都是帅哥~
+    </div>
+  </div>
+
+  <!-- 破坏文档流 父元素高度塌陷 -->
+  <div class="parent demo2">
+    <div class="float">
+      <img src="img-1.png">
+    </div>
+  </div>
+  <p>x我是帅哥，好巧啊x，我也是帅哥，原来看这本书的人都是帅哥~</p>
+</body>
+</html>
