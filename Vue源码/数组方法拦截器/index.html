@@ -39,6 +39,8 @@
       const original = arrayProto[method]
       // 重写方法
       arrayMethods[method] = function(...args) {
+        // 这里要注意this指向问题，如果是arr.push() 则this指向arr
+        // 在vue源码中，则是在数组调用操作方法后执行Obsever.observeArray()劫持数组项和通过Obsever.dep.notify()通知更新
         console.log('this', this)
         console.log(`拦截${method}`, args)
         // 得到当前方法的返回值
