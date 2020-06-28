@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组方法拦截器</title>
+</head>
+<body>
+  <script>
+    // 数组原型方法
+    const arrayProto = Array.prototype
+    console.log('arrayProto', arrayProto)
+
+    // 创建拦截器对象指向数组原型方法
+    // const arrayMethods = {} // 通过__proto__也可以实现原型链继承
+    // arrayMethods.__proto__ = arrayProto
+    const arrayMethods = Object.create(arrayProto)
+    console.log('arrayMethods', arrayMethods)
+
+    // 原型链继承的一些问题
+    console.log(arrayMethods.__proto__ === arrayProto) // true
+    console.log(arrayMethods instanceof Array) // true
+    console.log(arrayMethods instanceof arrayProto.constructor) // true
+    console.log(arrayProto.constructor === Array) // true
+
+    // 重写的数组方法
+    const methodsToPatch = [
+      'push',
+      'pop',
+      'shift',
+      'unshift',
+      'sort',
+      'splice',
+    ]
+
+    // 拦截器核心实现逻辑
+    methodsToPatch.forEach(method => {
+      // 暂存Array原型对象
+      const original = arrayProto[method]
+      // 重写方法
+      arrayMethods[method] = function(...args) {
+        console.log('this', this)
+        console.log(`拦截${method}`, args)
+        // 得到当前方法的返回值
+        const result = original.apply(this, args)
+        return result
+      }
+    })
+
+    // 测试数组
+    const arr = [1,2,3]
+    // 改变数组的原型对象 指向拦截器对象 调用重写的方法
+    arr.__proto__ = arrayMethods
+
+    arr.push(4,5,6,[7])
+    console.log(arr.pop())
+    arr.unshift('a','b')
+    arr.shift()
+    console.log('arr', arr)
+  </script>
+</body>
+</html>
