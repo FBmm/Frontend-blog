@@ -12,10 +12,19 @@
       top: 20px;
       left: 30px;
     }
+    .child {
+      position: absolute;
+      left: 100px;
+      top: 60px;
+    }
   </style>
 </head>
 <body>
   <!-- 相对定位 left top 等定位属性相对自身偏移 -->
-  <div class="box">position:relative</div>
+  <!-- 定位属性同时作用时 position: absolute 相对 position: relative 定位 -->
+  <div class="box">
+    <p>position: relative</p>
+    <div class="child">position: absolute</div>
+  </div>
 </body>
 </html>
