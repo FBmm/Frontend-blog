@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无依赖绝对定位</title>
+  <style>
+    .box {
+      padding: 50px;
+    }
+    .child {
+      position: absolute;
+    }
+    .ib {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 绝对定位时 如果无定位属性 则相对无position: absolute;属性的位置定位 -->
+  <div class="box">
+    <!-- 绝对定位元素在前时 相对自身的位置 但是破坏文档流 与后面元素重叠 -->
+    <span class="ib">这是正常流元素1</span>
+    <span class="child ib">这是绝对定位元素</span>
+    <span class="ib">这是正常流元素2</span>
+  </div>
+
+  <div class="box">
+    <!-- 绝对定位元素在后时 相对自身的位置 破坏文档流 但是不会移动位置 与前面元素重合 -->
+    <span class="ib">这是正常流元素a</span>
+    <span class="child ib">这是绝对定位元素</span>
+  </div>
+</body>
+</html>
