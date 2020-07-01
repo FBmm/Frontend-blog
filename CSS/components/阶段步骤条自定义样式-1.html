@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阶段步骤条自定义样式-1</title>
+  <style>
+    .icon {
+      display: inline-block;
+      min-width: 80px;
+      height: 60px;
+      background-color: brown;
+      position: relative;
+      margin: 0 25px;
+    }
+    .icon span {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+    }
+    .icon:after {
+      z-index: 0;
+      content: '';
+      top: 0;
+      right: calc(100% - 20px);
+      position: absolute;
+      border-width: 30px 30px 30px 30px;
+      border-color: brown brown brown transparent;
+      border-style: solid;
+    }
+    .icon:before {
+      z-index: 0;
+      content: '';
+      top: 0;
+      left: 100%;
+      position: absolute;
+      border-width: 30px 30px 30px 30px;
+      border-color: transparent transparent transparent brown;
+      border-style: solid;
+    }
+  </style>
+</head>
+<body>
+  <i class="icon"><span>规划中</span></i>
+  <i class="icon"><span>已评审</span></i>
+  <i class="icon"><span>开发中</span></i>
+  <i class="icon"><span>开发完成</span></i>
+  <i class="icon"><span>测试中</span></i>
+  <i class="icon"><span>测试通过</span></i>
+  <i class="icon"><span>已上线</span></i>
+</body>
+</html>
