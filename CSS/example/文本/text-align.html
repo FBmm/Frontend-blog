@@ -9,6 +9,11 @@
       width: 200px;
     }
 
+    /* :first-letter 伪元素会忽略辅助字符 */
+    p::first-letter {
+      color: red;
+    }
+
     .ta-j {
       /* text-align: justify 两端对齐的文本必须满足两点：1. 有分隔点，如空格 2. 必须是多行文本，不是最后一行的文本则会两端对齐 */
       text-align: justify;
@@ -38,6 +43,8 @@
   </style>
 </head>
 <body>
+  <p>????????????</p>
+  <p>??????辅助</p>
   <p>131313sadsaaaaaaaaaaaadasdsadad</p>
   <p class="p2 ta-j"><span>大萨达大大所多阿打算打</span></p>
 </body>
