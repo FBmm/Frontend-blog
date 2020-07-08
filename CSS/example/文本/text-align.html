@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text-align</title>
+  <style>
+    p {
+      width: 200px;
+    }
+
+    .ta-j {
+      /* text-align: justify 两端对齐的文本必须满足两点：1. 有分隔点，如空格 2. 必须是多行文本，不是最后一行的文本则会两端对齐 */
+      text-align: justify;
+    }
+    
+    /* 极客手段实现单行文本两端对齐 */
+    /* 利用伪元素自动补一行 */
+    /* 但是有弊端 高度不是单行文本的高度 - 原因是生成幽灵空白节点  */
+    .p2:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      font-size: 0;
+    }
+
+    /* 父元素font-size:0 隐藏空白节点，然后设置子元素字体大小取消额外的高度 */
+    .p2 { font-size: 0; }
+    .p2 span { font-size: 14px; }
+
+    /* 使用以上方式有兼容性问题 由于IE浏览器如果font-size:0则默认元素不存在 无法两端对齐 可以设置.1px 但是由于谷歌浏览器最小font-size:12px限制 间隙又会存在 */
+    /* 所以有以下兼容性的写法 */
+    .justify {
+      text-align: justify;
+      font-size: .1px;
+      font-size: -webkit-calc(0px + 0px);
+    }
+  </style>
+</head>
+<body>
+  <p>131313sadsaaaaaaaaaaaadasdsadad</p>
+  <p class="p2 ta-j"><span>大萨达大大所多阿打算打</span></p>
+</body>
+</html>
