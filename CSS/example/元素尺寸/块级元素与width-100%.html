@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>块级元素与width-100%</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            background-color: tomato;
+        }
+        .block {
+            display: block;
+            height: 50px;
+        }
+        .w100 {
+            width: 100%;
+        }
+        .t {
+            background-color: thistle;
+            margin: 0 20px;
+            padding: 0 20px;
+            /* border: 20px solid; */
+            /* box-sizing: border-box; */
+        }
+        .c {
+            background-color: violet;
+            margin: 0 20px;
+            /* padding: 0 20px; */
+            /* border: 20px solid; */
+        }
+        .b {
+            background-color: yellowgreen;
+        }
+        .b div {
+            margin: 0 20px;
+            padding: 0 20px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="block w100 t"></span>
+        <span class="block c"></span>
+        <span class="block w100 b">
+            <div></div>
+        </span>
+    </div>
+</body>
+</html>
