@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position-fixed、absolute的包含块</title>
+  <style>
+    html {
+      width: 90%;
+      height: 100%;
+    }
+    
+    .box {
+      width: 90%;
+      position: relative;
+      height: 100px;
+      border: 1px solid;
+    }
+
+    .absolute {
+      position: absolute;
+      width: 300px;
+      height: 50px;
+      border: 1px solid red;
+      right: 0;
+    }
+
+    .fixed {
+      position: fixed;
+      width: 300px;
+      height: 50px;
+      border: 1px solid blue;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="absolute">absolute</div>
+  </div>
+  <div class="fixed">fixed</div>
+</body>
+</html>

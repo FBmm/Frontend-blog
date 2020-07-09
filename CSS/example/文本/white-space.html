@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>white-space</title>
+  <style>
+    /* 
+      white-space 如何处理元素的空白符 - 换行符空白、制表符空白、空格空白
+      white-space 通过回车符是否生效以及是否自动换行（文本环绕）可以决定文本是否一行显示
+      
+      normal: 合并换行符和其他空白符、自动换行（文本环绕）
+      nowrap: 合并所有空白符、禁止自动换行
+      pre: 保留所有空白符、禁止自动换行
+      pre-wrap: 保留所有空白符、允许自动换行（文本环绕）
+      pre-line: 保留换行符、合并其他空白符、允许自动换行（文本环绕）
+    */
+    .box {
+      white-space: normal; 
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <span class="box">2131 sad  asda sadasa 
+          a
+
+  </span>
+</body>
+</html>
