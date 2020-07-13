@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绝对定位元素的百分比宽高</title>
+  <style>
+    .box {
+      padding: 50px;
+      margin: 50px;
+      width: 1000px;
+    }
+    .percent-100 {
+      width: 100%;
+      height: 100%;
+      background-color: blue;
+    }
+    .position-box {
+      padding: 50px;
+      border: 30px solid red;
+      margin: 50px;
+      width: 1000px;
+      position: relative;
+    }
+    .ab {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <!-- 正常元素的百分比宽高 -->
+  <div class="box">
+    <div>这是一行文本1</div>
+    <!-- 宽度是包含块元素的content box宽度 -->
+    <!-- 高度是0 只有显示声明父元素高度 height: 100%才会生效 否则元素的高度是默认的content box高度 -->
+    <div class="percent-100"></div>
+  </div>
+
+  <!-- 绝对定位元素的百分比宽高 -->
+  <div class="position-box">
+    <div>这是一行文本2</div>
+    <!-- 宽度是包含块元素的padding box宽度 -->
+    <!-- 高度也是包含块元素的padding box高度 -->
+    <div class="ab percent-100"></div>
+  </div>
+</body>
+</html>
