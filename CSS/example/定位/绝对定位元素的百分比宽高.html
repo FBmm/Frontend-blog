@@ -32,7 +32,9 @@
   <div class="box">
     <div>这是一行文本1</div>
     <!-- 宽度是包含块元素的content box宽度 -->
+    <!-- 宽度父元素auto 百分比生效 -->
     <!-- 高度是0 只有显示声明父元素高度 height: 100%才会生效 否则元素的高度是默认的content box高度 -->
+    <!-- 高度父元素auto 百分比不生效 -->
     <div class="percent-100"></div>
   </div>
 
@@ -41,6 +43,7 @@
     <div>这是一行文本2</div>
     <!-- 宽度是包含块元素的padding box宽度 -->
     <!-- 高度也是包含块元素的padding box高度 -->
+    <!-- 父元素宽高auto 百分比生效 -->
     <div class="ab percent-100"></div>
   </div>
 </body>
