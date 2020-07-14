@@ -38,7 +38,8 @@
         - [实现代码](Vue源码/数组方法拦截器/index.html)
 
 - git
-    - [git命令](Git操作/readme.md)
+    - [git命令](Git/readme.md)
+    - [git项目管理](Git/Git项目管理操作.md)
 
 - nodeJS
     - [egg+mongoose](https://github.com/FBmm/egg-mongoose-example)
