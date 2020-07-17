@@ -109,4 +109,4 @@ display：inline-block 元素就可以被很好的解释，外盒子是inline级
 
 我在项目中试用，发现这种布局确实很灵活，在元素定宽的同时不需要去额外计算border、padding值，实现定宽布局。
 
-[宽度分离布局demo](example/流体布局/宽度分离原则布局.html)
+[宽度分离布局demo](example/布局/宽度分离原则布局.html)
