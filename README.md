@@ -13,18 +13,34 @@
     - [css文档](CSS/readme.md)
 
 - css example
-    - [布局]
+    - 布局
         - [宽度分离原则布局](CSS/example/布局/宽度分离原则布局.html)
-    - [垂直居中]
+    - 垂直居中
         - [基于line-height的多行文本垂直居中](CSS/example/垂直居中/基于line-height单行文本垂直居中的1px问题.html)
         - [绝对定位元素的margin-auto垂直水平居中](CSS/example/垂直居中/绝对定位元素的margin-auto垂直水平居中.html)
-    - [浮动]
+    - 浮动
         - [#锚点、焦点定位](CSS/example/浮动/#锚点、焦点定位.html)
         - [BFC-demo](CSS/example/浮动/BFC-demo.html)
         - [float特性](CSS/example/浮动/float特性.html)
-    - [定位]
+    - 定位
         - [position-relative与定位](CSS/example/定位/position-relative与定位.html)
         - [无依赖绝对定位](CSS/example/定位/无依赖绝对定位.html)
+    - 盒尺寸
+        - [padding对内联元素垂直的作用](CSS/example/盒尺寸/padding对内联元素垂直的作用.html)
+    - 文本
+        - [text-align](CSS/example/文本/text-align.html)
+        - [white-space](CSS/example/文本/white-space.html)
+    - 文档流
+        - [行框盒子（line-box）开始的空白节点](CSS/example/文档流/行框盒子（line-box）开始的空白节点.html)
+        - [textarea-display问题](CSS/example/文档流/textarea-display问题.html)
+    - 元素尺寸
+        - [“首选最小宽度”与凹凸效果](CSS/example/元素尺寸/“首选最小宽度”与凹凸效果.html)
+        - [块级元素与width-100%](CSS/example/元素尺寸/块级元素与width-100%.html)
+        - [首选最小宽度](CSS/example/元素尺寸/首选最小宽度.html)
+        - [height-100%测试](CSS/example/元素尺寸/height-100%测试.html)
+        - [height-100%如何生效](CSS/example/元素尺寸/height-100%如何生效.html)
+        - [min-width、min-height默认值测试](CSS/example/元素尺寸/min-width、min-height默认值测试.html)
+        - [width-100%测试](CSS/example/元素尺寸/width-100%测试.html)
         
 - js
     - [dom操作](JS/DOM操作.md)
@@ -61,8 +77,10 @@
 
 - 计算机基础
     - 数据结构
-    - 设计模式
+        - [数据结构与算法](计算机基础/数据结构/数据结构与算法.md)
+        - [线性表](计算机基础/数据结构/线性表.md)
     - [计算机网络](计算机基础/计算机网络.md)
+    - 设计模式
 
 - 数据库
     - [MongoDB](https://github.com/FBmm/Mongodb-blog)
