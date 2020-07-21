@@ -1,3 +1,4 @@
+// 基础版 promise
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
