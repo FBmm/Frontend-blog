@@ -12,7 +12,7 @@ class MyPromise {
     this._fulfilledQueues = [];
     this._rejectedQueues = [];
     try {
-      executor(this._resolve, this._reject)
+      executor(this._resolve.bind(this), this._reject.bind(this))
     } catch(err) {
       this._reject(err)
     }

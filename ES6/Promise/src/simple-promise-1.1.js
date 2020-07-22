@@ -1,4 +1,4 @@
-// 基础版 promise 完善版
+// 基础版 promise 优化链式调用
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
@@ -39,7 +39,7 @@ class SimplePromise {
     } else if (this.status === REJECTED) {
       typeof onRejected === 'function' && onRejected(this.value)
     }
-    return this // 实现链式调用
+    return new SimplePromise() // 实现链式调用
   }
   catch(onRejected) {
     if (this.status === PENDING) {

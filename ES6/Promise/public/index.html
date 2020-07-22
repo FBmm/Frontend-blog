@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Promise测试</title>
 </head>
 <body>
-    <script src="../src/simple-promise-1.0.js"></script>
+    <script src="../src/simple-promise-1.1.js"></script>
     <script>
         var p = new SimplePromise((resolve, reject) => {
           setTimeout(() => {
@@ -15,6 +15,19 @@
         })
         .then(_=> {console.log(_)})
         .catch(_=> {console.log(_)})
+
+        var promise = new Promise((r,j) => {
+          setTimeout(() => {
+            j(1)
+          }, 2000)
+        }).then((v) => {
+          console.log(v)
+          return new Promise((r,j) =>{
+            setTimeout(() =>{
+              j(2)
+            }, 1000)
+          })
+        }).catch(e => console.log(e))
     </script>
 </body>
 </html>
