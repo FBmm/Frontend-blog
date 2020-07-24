@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 600px;
+      display: inline-flex;
+      flex-basis: 0;
+      /* flex-wrap: wrap-reverse; */
+      /* justify-content: space-around; */
+      /* align-content: space-around; */
+    }
+    .item {
+      width: 40px;
+      border: 1px solid silver;
+    }
+    .item-1 {
+      flex-grow: 1
+    }
+    .item-2 {
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .item-3 {
+      width: 100px;
+      flex-shrink: 2
+    }
+    .item-4 {
+      width: 100px;
+      flex-shrink: 1
+    }
+    .item-5 {
+      flex-basis: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span class="item item-1"></span>
+    <span class="item item-2">xxxx</span>
+    <span class="item item-3">HLxx</span>
+    <span class="item item-4">大</span>
+    <span class="item item-5">大</span>
+  </div>
+  <!-- <div class="box">
+    <span class="item">a</span>
+    <span class="item">b</span>
+    <span class="item">v</span>
+    <span class="item">d</span>
+    <span class="item">e</span>
+    <span class="item">f</span>
+  </div> -->
+  <script>
+    document.getElementsByClassName("box")[0].addEventListener('click', function(e) {})
+  </script>
+</body>
+</html>

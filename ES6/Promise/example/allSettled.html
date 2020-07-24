@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>allSettled</title>
+</head>
+<body>
+  <script>
+    var p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('first')
+      }, 3000)
+    })
+
+    var p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('seceond')
+      }, 3200)
+    })
+
+    var p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('third')
+      }, 1500)
+    })
+    console.time("a")
+    Promise.all([p1,p2,p3]).then(data=> {
+      console.timeEnd("a")
+      console.log(data)
+    })
+  </script>
+</body>
+</html>

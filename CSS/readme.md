@@ -95,7 +95,7 @@ display：inline-block 元素就可以被很好的解释，外盒子是inline级
 
 **但是为什么不支持margin-box？**
 
-我找到的原因：
+我找到的解释：
 1. 没有足够的使用场景。
 2. W3C规范明确表示margin的背景永远是透明的。如果支持了margin-box，那么背景色要在margin box中显示吗？
 
