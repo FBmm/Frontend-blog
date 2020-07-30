@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归乘法</title>
+</head>
+<body>
+    <script>
+        var ff = function(a,b) {
+            let c = 0
+            while(a-- > 0) {
+                c += b
+            }
+            return c
+        }
+        console.log(ff(10000,10))
+    </script>
+</body>
+</html>
