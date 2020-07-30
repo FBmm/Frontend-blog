@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>斐波那契数列</title>
+</head>
+<body>
+  <pre>
+    写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：
+
+    F(0) = 0,   F(1) = 1
+    F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
+    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。
+
+    答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+  </pre>
+  <script>
+    // 1. 暴力解法
+    // 每一项都会重复计算 很浪费时间和空间 结果可能超时
+    var fib1 = function (n) {
+      if(n===0 || n===1) return n
+      return (fib1(n-1) + fib1(n-2)) % 1000000007
+    };
+    // console.log(fib1(50))
+
+    // 2. 尾递归 节约内存 尾递归只会占用恒量的内存（和迭代一样）
+    var fib2 = function (n) {
+      function calc(n, a, b) {
+        if(n===0 || n===1) return n
+        if (n==2) return b
+        return calc(n-1, b, (a+b))
+      }
+      return calc()
+    };
+    // console.log(fib2(100))
+
+    // 3. 递归+动态规划
+    //优点：空间换时间，所有计算结果都被缓存，下一次计算直接读取缓存结果，性能比较好
+    //缺点：需要额外的储存空间，空间复杂度高
+    //注：动态规划的思想是，通过保存中间计算结果，减少结果计算时间
+    var fib3 = function(n) {
+      var temp = [0,1]
+      function calc(n) {
+        if(temp[n] !== undefined) return temp[n]
+        demp[n] = calc(n-1) + calc(n-2);
+        return demp[n] % 1000000007
+      }
+      return calc(n)
+    }
+  </script>
+</body>
+</html>
