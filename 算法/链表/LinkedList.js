@@ -1,6 +1,5 @@
-// 链表的js实现
+// 线性链表
 function LinkedList() {
-
   // 链表结点构造函数
   let Node = function(el) {
     this.el = el // 数据域
