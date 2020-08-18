@@ -90,7 +90,7 @@ let y = 2;
 5. 函数参数的默认值
 6. 模块变量赋值
 
-### 箭头函数
+## 箭头函数
 
 - 箭头函数内部的this，是定义是所在的对象，而不是使用时所在的对象
   - 普通函数this可变
@@ -119,7 +119,7 @@ function fn() {
 }
 ```
 
-### 数组扩展
+## 数组扩展
 
 - 扩展运算符 ...
   - 类似于 rest 参数的逆运算
@@ -139,7 +139,7 @@ function fn() {
   - 第一个参数是函数，第二参数是遍历绑定的this
 - ES6会将数组空位转为undefined
 
-### Iterator
+## Iterator
 
 > Iterator 遍历器是一种机制。也是一种接口，为各种不同的数据结构提供统一的访问机制。
 
@@ -165,8 +165,27 @@ function fn() {
 1. 由于对象无法保证遍历顺序
 2. Iterator遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历接口等于是一种线性转换
 
-### Generator
+## Generator
 
 - 异步编程解决方案
 - 语法上，是一种状态机
 - 形式上，是一个普通函数
+
+## 模块化 import、export
+
+- ES6之前，有两种模块化加载方案：CommonJS、AMD
+  - CommonJS：用于服务器，nodejs使用CommonJS模块规范，CommonJS 模块就是对象，同步加载。
+  - AMD：用于浏览器，非同步加载模块，允许指定回调函数。
+
+ES6的模块化的思想是尽量静态化，在编译时就能确定模块的依赖关系，。CommonJS和AMD只能在运行时确定这些。
+
+```js
+// ES6模块
+import { stat, exists, readFile } from 'fs';
+
+// CommonJS模块
+const { stat, exists, readFile } = require('fs');
+```
+
+ES6模块化从fs模块加载三个方法，其他方法不加载，这种加载称为静态加载，静态加载可以通过代码静态分析工具和 tree shaking 优化资源。
+而CommonJS是加载整个模块，生成一个对象，再从对象上读取三个方法。这种方式称为运行时加载。
