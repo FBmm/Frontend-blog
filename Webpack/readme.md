@@ -1,6 +1,6 @@
 # Webpack
 
-基础就不写了，可以看官网[webpack官网](https://www.webpackjs.com/concepts/)，直接来干货，主要谈 webpack 在项目中的应用和实现原理。
+[webpack官网](https://www.webpackjs.com/concepts/)
 
 ## 前端项目为什么使用 Webpack ?
 
