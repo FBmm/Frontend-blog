@@ -139,6 +139,64 @@ vuex 官方文档中描述：
 
 前端性能优化的方法：
 1. 业务代码层面优化
-2. 通过webpack构建优化
+2. webpack构建优化
+
+#### 业务代码层面优化
+
+##### 前端性能优化之公共js库引入方式优化
+
+在日常的开发中，我们经常会用到一些js的库比如 lodash、rxjs 等等，就 lodash 而言，比如我们要使用 lodash 的深拷贝 cloneDeep 方法，现在分别对比两种引入方式构建的速度与体积。
+
+测试的 webpack.config.js 配置
+
+```js
+const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+```
+
+###### 1. 从 lodash 中引入 cloneDeep 方法
+
+```js
+import { cloneDeep } from "lodash";
+
+function clone(source) {
+  return cloneDeep(source)
+}
+
+const obj = {a: 1}
+const clonedObj = clone(obj)
+console.log(clonedObj, clonedObj === obj)
+```
+
+构建结果：1733ms 978K
+
+```s
+Hash: b1cf462402800ae666ae
+Version: webpack 4.44.1
+Time: 1897ms
+Built at: 2020-08-20 13:46:48
+    Asset      Size  Chunks             Chunk Names
+bundle.js  1.38 MiB    main  [emitted]  main
+Entrypoint main = bundle.js
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {main} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {main} [built]
+[./src/index.js] 189 bytes {main} [built]
+    + 1 hidden module
+```
+
+Chrome Source
+
+我们可以看到这种方式打包的资源包括完整的lodash文件，但是这里有个问题，如果我们在项目只是用 cloneDeep，并不会用到 lodash 其他的 api，如此一来是不是浪费了很多体积和构建的时间，所以我们应该考虑资源能不能按需加载，下面我们看一下第二种引入方式。
+
+![source](Assets/xnyh-2.jpg)
 
 
