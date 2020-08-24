@@ -177,7 +177,7 @@ const clonedObj = clone(obj)
 console.log(clonedObj, clonedObj === obj)
 ```
 
-构建结果：1733ms 978K
+构建结果：1897ms 1.38 MiB
 
 ```s
 Hash: b1cf462402800ae666ae
