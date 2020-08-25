@@ -163,7 +163,9 @@ module.exports = {
 }
 ```
 
-###### 1. 从 lodash 中引入 cloneDeep 方法
+###### 1. ```js import { cloneDeep } from "lodash" ```
+
+这种方式会引入 lodash 全部的 api
 
 ```js
 import { cloneDeep } from "lodash";
@@ -193,10 +195,49 @@ Entrypoint main = bundle.js
     + 1 hidden module
 ```
 
+> 我们可以看到这种方式打包的资源包括完整的lodash文件，但是这里有个问题，如果我们在项目只是用 cloneDeep，并不会用到 lodash 其他的 api，如此一来是不是浪费了很多体积和构建的时间，所以我们应该考虑资源能不能按需加载，下面我们看一下第二种引入方式。
+
 Chrome Source
 
-我们可以看到这种方式打包的资源包括完整的lodash文件，但是这里有个问题，如果我们在项目只是用 cloneDeep，并不会用到 lodash 其他的 api，如此一来是不是浪费了很多体积和构建的时间，所以我们应该考虑资源能不能按需加载，下面我们看一下第二种引入方式。
+![source](Assets/source-1.jpg)
 
-![source](Assets/xnyh-2.jpg)
+###### 2. ```js import cloneDeep from "lodash/cloneDeep" ```
 
+按需只引入 cloneDeep 和其所依赖的方法
+
+```js
+import cloneDeep from "lodash/cloneDeep";
+
+function clone(source) {
+  return cloneDeep(source)
+}
+
+const obj = {a: 1}
+const clonedObj = clone(obj)
+console.log(clonedObj, clonedObj === obj)
+```
+
+构建结果：1349ms 252 KiB
+
+相比上面，体积减少了 1M 多
+
+```s
+Hash: 31b7f723a954e9d5115d
+Version: webpack 4.44.1
+Time: 1349ms
+Built at: 2020-08-25 9:36:02
+    Asset     Size  Chunks             Chunk Names
+bundle.js  252 KiB    main  [emitted]  main
+Entrypoint main = bundle.js
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {main} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {main} [built]
+[./src/index.js] 199 bytes {main} [built]
+    + 108 hidden modules
+```
+
+> 如果我们通过这种引入方式，可以达到公共js资源按需加载的目的，可以优化大量的资源体积。
+
+Chrome Source
+
+![source](Assets/source-2.PNG)
 
