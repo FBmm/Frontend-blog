@@ -37,6 +37,7 @@
   - vue 2 Snippets - vue2片段补全、语法高亮工具
   - vue helper - vue代码提示工具、包含vue2所有api、还包含vue-router2和vuex2的代码提示、支持模板中的vue变量以及函数跳转定义
   - vue css peek - 单页面vue文件css转定义
+  - Vue Peek - vue组件转到定义
 
 - angular
   - TSLint - Typescript语法检测
