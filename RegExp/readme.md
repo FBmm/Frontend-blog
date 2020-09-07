@@ -41,7 +41,7 @@
 
 **示例1**
 
-. 当做元字符匹配任意字符。
+. 当做元字符匹配任意字符，匹配 2020/9/4、2020.9.4、2020-9-4的用法。
 
 ```js
 /2020.9.4/.test('2020/9/4') // true
@@ -53,7 +53,7 @@
 
 **示例2**
 
-. 当做普通字符只匹配 . 的用法。
+. 当做普通字符只匹配 2020.9.4 的用法。
 
 ```js
 /2020\.9\.4/.test('2020/9/4') // fasle
@@ -67,15 +67,23 @@
 **示例1**
 
 ```js
+// 字符中包含 qian
 /qian/.test('wuqian') // true
+// 单词以 qian 开头
 /\bqian/.test('wuqian') // false
+// 单词以 qian 结束
+/qian\b/.test('wuqian') // true
+// 单词以 wu 开头
 /\bwu/.test('wuqian') // true
 ```
 
 **示例2**
 
 ```js
+// 单词不以 qian 开头
 /\Bqian/.test('wuqian') // true
+// 单词不以 qian 结束
+/qian\B/.test('wuqian') // false
 ```
 
 ### 特殊字符
