@@ -60,6 +60,15 @@
 /2020\.9\.4/.test('2020.9.4') // true
 ```
 
+**示例3**
+
+在字符组内部，. 不是元字符，只匹配字符 .
+
+```js
+/2020[.-/]9[.-/]4/.test('2020/9/4') // true
+/2020[.-/]9[.-/]4/.test('2020.9.4') // true
+```
+
 ### 单词分界符 \b \B
 
 \b（\B）主要用于查找（非）单词开头或结尾的匹配。 
@@ -85,6 +94,41 @@
 // 单词不以 qian 结束
 /qian\B/.test('wuqian') // false
 ```
+### 量词
+
+#### 匹配0次或1次 ?
+
+等价于 {0,1}
+
+**示例1**
+
+简单的url匹配正则，url协议有两种模式：http://www.baidu.com、https://www.baidu.com，s 可能有或者没有
+
+```js
+/https?:\S+/.test('http://www.baidu.com') // true http协议
+/https?:\S+/.test('https://www.baidu.com') // true https协议
+```
+
+#### 匹配1次或n次 + 
+
+等价于 {1}
+
+#### 匹配0次或n次 *
+
+等价于 {0}
+
+#### 匹配后面紧接字符串n的字符串 ?=n
+
+**示例1**
+
+匹配字符串中我的姓，替换成大写。
+注意 wu qian 不会被替换，因为隔了空格。```/wu(?=\s+qian)/```可以支持匹配这种格式。 
+
+```js
+'wuqian wu qian wrqian wuqian'.replace(/wu(?=qian)/, str => str.toUpperCase()) 'WUqian wu qian wrqian WUqian'
+```
+
+#### 匹配后面没有紧接字符串n的字符串 ?!n
 
 ### 特殊字符
 
