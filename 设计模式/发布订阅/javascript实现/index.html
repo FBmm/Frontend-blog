@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observer</title>
+</head>
+<body>
+  <script src="./index.js"></script>
+  <script>
+    const Pub = new PublishSub
+    Pub.subscribe("message", (...args) => {
+      console.log(args)
+    })
+    Pub.publish("message", '发布一条消息', 1, [0])
+  </script>
+</body>
+</html>
