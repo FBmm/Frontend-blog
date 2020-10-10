@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position + float + margin负值</title>
+    <style>
+        .container{
+            margin: 0 0 10px;
+        }
+        .left{
+            position: relative;
+            width: 200px;
+            float: left;
+            margin-right: -200px;
+            background: red;
+        }
+        .right{
+            width: 100%;
+            margin-left: 200px;
+            float: right;
+            background: blue;
+        }
+        .r__c{
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <p>左侧定宽</p>
+        </div>
+        <div class="right">
+            <div class="r__c">
+                <p>右侧自适应</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

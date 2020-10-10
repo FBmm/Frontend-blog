@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: 200px auto;
+            grid-template-rows: 200px 200px;
+        }
+        .left {
+            background-color: red;
+        }
+        .right {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="left">左侧固定</div>
+        <div class="right">右侧自适应</div>
+    </div>
+</body>
+</html>
