@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    /* 绝对定位元素，没有任何 left/top/right/bottom 属性设置，并且其祖先元素全部都是非定位元素，其位置在哪里？ */
+    /* 是相对根元素html定位吗？ */
+    /* html {
+      width: 80%;
+    } */
+    body {
+      margin: 50px;
+    }
     .box {
-      /* top: 0; */
-      position: absolute;
+      /* position: absolute;
+      top: 0;
+      right: 0; */
+
       width: 300px;
       height: 150px;
       background-color: deeppink;
-    }
-    .box1 {
-      width: 300px;
-      height: 150px;
-      background-color: blue;
     }
   </style>
 </head>
 <body>
   <div class="box"></div>
-  <!-- <div class="box1"></div> -->
 </body>
 </html>
