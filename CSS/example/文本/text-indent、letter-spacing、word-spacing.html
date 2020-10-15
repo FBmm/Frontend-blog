@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text-indent、letter-spacing、word-spacing</title>
+  <style>
+    .text-indent {
+      text-indent: 50%;
+    }
+    /* 作用在字符上 */
+    .letter-spacing {
+      padding: 0 300px;
+      /* 反向排列 */
+      letter-spacing: -20px;
+    }
+    /* 作用在空格上 */
+    .word-spacing {
+      word-spacing: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p class="text-indent">text-indent</p>
+    <p class="letter-spacing">letter-spacing</p>
+    <p class="word-spacing">word-spacing word spacing 这是内容 内容 内 ...</p>
+  </div>
+</body>
+</html>
