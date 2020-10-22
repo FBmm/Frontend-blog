@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLex Grid 元素换行对比</title>
+  <style>
+    .flex-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex-wrapper > div {
+      flex: 1 1 200px;
+      border: 1px solid red;
+      height: 200px;
+    }
+
+    .grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-wrapper > div {
+      border: 1px solid red;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flex layout</h1>
+  <div class="flex-wrapper">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
+    <div>five</div>
+  </div>
+  <h1>Grid layout</h1>
+  <div class="grid-wrapper">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
+    <div>five</div>
+  </div>
+</body>
+</html>

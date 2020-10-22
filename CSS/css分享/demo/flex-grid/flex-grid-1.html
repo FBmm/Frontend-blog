@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex与grid布局对比</title>
+  <style>
+    /* flex css */
+    .flex-layout {
+      display: flex;
+    }
+    .flex-layout .left {
+      flex: 1 0 0;
+      margin-right: 24px;
+    }
+    .flex-layout .middle {
+      flex: 1.5 0 0;
+      margin-right: 24px;
+    }
+    .flex-layout .right {
+      flex: 2 0 0;
+    }
+    .flex-item {
+      margin-bottom: 24px;
+      height: 200px;
+      border: 2px solid red;
+    }
+
+    /* grid css */
+    .grid-layout {
+      display: grid;
+      grid-template-rows: 200px 200px;
+      grid-template-columns: 1fr 1.5fr 2fr;
+      grid-gap: 24px 24px;
+    }
+    .grid-item {
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>FLex layout</h1>
+  <div class="flex-container">
+    <div class="flex-layout">
+      <div class="left">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+      </div>
+      <div class="middle">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+      </div>
+      <div class="right">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+      </div>
+    </div>
+  </div>
+  <h1>Grid layout</h1>
+  <div class="grid-layout">
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+  </div>
+</body>
+</html>
