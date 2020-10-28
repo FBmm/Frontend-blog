@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=s, initial-scale=1.0">
+  <title>out of flow</title>
+  <style>
+    body {
+      width: 600px;
+    }
+    .float_l {
+      float: left;
+    }
+    .absolute {
+      position: absolute;
+    }
+    .box1 {
+      background-color: #D24D57;
+    }
+    .box2 {
+      background-color: #26A65B;
+    }
+  </style>
+</head>
+<body>
+  <h1>float</h1>
+  <div class="box1">
+    <div class="float_l">
+      <img src="https://cn.vuejs.org/images/logo.png" width="100" alt="">
+    </div>
+    <p>官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
+  </div>
+  <h1>position: absolute</h1>
+  <div class="box2">
+    <div class="box absolute">
+      <img src="https://cn.vuejs.org/images/logo.png" width="100" alt="">
+    </div>
+    <p>官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
+  </div>
+</body>
+</html>
