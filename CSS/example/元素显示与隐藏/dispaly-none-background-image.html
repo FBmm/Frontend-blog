@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      display: none;
+      background-image: url('https://cn.vuejs.org/images/logo.png');
+    }
+
+    .box1 {
+       display: none;
+    }
+    .inner {
+      width: 300px;
+      height: 300px;
+      background-image: url('https://cn.vuejs.org/images/imooc-sponsor.png');
+    }
+    .img {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- 结论：
+    1. 元素 dispaly: none 背景图片会加载
+    2. 父元素 display: none 背景图片不会加载  
+    3. img元素 display: none 背景图片总会加载 不管父元素是否是 display: none
+  -->
+  <div class="box"></div>
+
+  <div class="box1">
+    <div class="inner"></div>
+  </div>
+
+  <img class="img" src="https://cn.vuejs.org/images/dcloud.gif" alt="">
+
+  <!-- <div class="img">
+    <img  src="https://cn.vuejs.org/images/dcloud.gif" alt="">
+  </div> -->
+</body>
+</html>

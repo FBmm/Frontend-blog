@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+    }
+    #box :nth-child(5n+1) {
+      color:#ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" class=a>
+  </div>
+  <script>
+    const dom = document.getElementById('box');
+    for (let i = 0; i < 30; i++) {
+      const button = document.createElement('button')
+      button.innerText = "测试" + i;
+      button.style = 'width: 100px;';
+      dom.appendChild(button)
+    }
+  </script>
+</body>
+</html>
