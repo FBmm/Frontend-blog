@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // result: 没有效果
+    "use strict";
+    function Fibonacci (n) {
+      if ( n <= 1 ) {return 1};
+
+      return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+    Fibonacci(100)
+  </script>
+</body>
+</html>

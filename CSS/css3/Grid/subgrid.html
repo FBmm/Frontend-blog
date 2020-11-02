@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      display: grid;
+      grid: auto-flow / auto 1fr;
+    }
+    li {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: subgrid;
+      border: solid;
+    }
+    label {
+      grid-column: 1;
+    }
+    input {
+      grid-column: 2;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><label>Name:</label> <input name=fn>
+    <li><label>Address:</label> <input name=address>
+    <li><label>Phone:</label> <input name=phone>
+  </ul>
+</body>
+</html>
