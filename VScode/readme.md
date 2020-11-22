@@ -43,4 +43,8 @@
   - TSLint - Typescript语法检测
   - Angular 7 Snippets - angular 模板标签补全
   - Debugger for chrome 调试工具
+
+### 翻译
+
+- Comment Translate - 注释翻译
   
