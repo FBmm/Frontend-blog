@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左定宽，右自适应两栏布局 - flex</title>
+    <style>
+        .two-cols-layout {
+            display: flex;
+        }
+        .two-cols-layout__left {
+            width: 300px;
+            height: 600px;
+            background: #D24D57;
+        }
+        .two-cols-layout__right {
+            flex: 1;
+            height: 600px;
+            background: #2C3E50;
+        }
+    </style>
+</head>
+<body>
+    <div class="two-cols-layout">
+        <div class="two-cols-layout__left"></div>
+        <div class="two-cols-layout__right"></div>
+    </div>
+</body>
+</html>

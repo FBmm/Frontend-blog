@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左定宽，右自适应两栏布局 - grid</title>
+    <style>
+        .two-cols-layout {
+            display: grid;
+            grid-template-columns: 300px auto;
+            grid-template-rows: 600px;
+        }
+        .two-cols-layout__left {
+            background-color: #D24D57;
+        }
+        .two-cols-layout__right {
+            background-color: #2C3E50;
+        }
+    </style>
+</head>
+<body>
+    <div class="two-cols-layout">
+        <div class="two-cols-layout__left"></div>
+        <div class="two-cols-layout__right"></div>
+    </div>
+</body>
+</html>

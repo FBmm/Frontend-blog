@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏两列自适应 - flex</title>
+    <style>
+        .three-cols-layout {
+            display: flex;
+        }
+        .three-cols-layout__left {
+            flex: 1;
+            height: 300px;
+            background: #D0D0D0;
+        }
+        .three-cols-layout__middle {
+            flex: 1.5;
+            height: 300px;
+            background: #D24D57;
+        }
+        .three-cols-layout__right {
+            flex: 2;
+            height: 300px;
+            background: #2C3E50;
+        }
+        .mt {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="three-cols-layout">
+        <div class="three-cols-layout__left"></div>
+        <div class="three-cols-layout__middle"></div>
+        <div class="three-cols-layout__right"></div>
+    </div>
+    <div class="three-cols-layout mt">
+        <div class="three-cols-layout__left"></div>
+        <div class="three-cols-layout__middle"></div>
+        <div class="three-cols-layout__right"></div>
+    </div>
+</body>
+</html>
