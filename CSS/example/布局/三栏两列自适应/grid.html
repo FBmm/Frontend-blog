@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三栏两列自适应 - grid</title>
     <style>
-        .three-layout {
+        .three-cols-layout {
             display: grid;
             grid-template-columns: 1fr 1.5fr 2fr; /* 三栏宽度 */
             grid-template-rows: 300px 300px; /* 两列高度 */
             grid-gap: 8px 0; /* 间隔 */
         }
-        .three-layout__item--bg-gray {
+        .three-cols-layout__item--bg-gray {
             background-color: #D0D0D0;
         }
-        .three-layout__item--bg-red {
+        .three-cols-layout__item--bg-red {
             background-color: #D24D57;
         }
-        .three-layout__item--bg-black {
+        .three-cols-layout__item--bg-black {
             background-color: #2C3E50;
         }
     </style>
 </head>
 <body>
-    <div class="three-layout">
-        <div class="three-layout__item--bg-gray"></div>
-        <div class="three-layout__item--bg-red"></div>
-        <div class="three-layout__item--bg-black"></div>
-        <div class="three-layout__item--bg-gray"></div>
-        <div class="three-layout__item--bg-red"></div>
-        <div class="three-layout__item--bg-black"></div>
+    <div class="three-cols-layout">
+        <div class="three-cols-layout__item--bg-gray"></div>
+        <div class="three-cols-layout__item--bg-red"></div>
+        <div class="three-cols-layout__item--bg-black"></div>
+        <div class="three-cols-layout__item--bg-gray"></div>
+        <div class="three-cols-layout__item--bg-red"></div>
+        <div class="three-cols-layout__item--bg-black"></div>
     </div>
 </body>
 </html>
