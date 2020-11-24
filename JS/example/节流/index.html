@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn">点击</button>
+  </div>
+  <script>
+    // 节流函数：在单位时间间隔内只执行一次回调，如果单位时间内多次触发，只执行一次。（多次触发，单位时间内至少执行一次）
+
+    // 基础版
+    // function throttle(fn, delay, immidiate) {
+    //   if (typeof fn !== 'function') {
+    //     throw new Error("Expected a function")
+    //   }
+    //   delay = Number(delay) || 0;
+    //   let startTime = 0;
+    //   const debounced = (...args) => {
+    //     const now = new Date()
+    //     if (now - startTime > delay) {
+    //       fn.apply(this, args)
+    //       startTime = now
+    //     }
+    //   }
+    //   return debounced
+    // }
+
+    // 
+    function throttle(fn, delay, immidiate) {
+      if (typeof fn !== 'function') {
+        throw new Error("Expected a function")
+      }
+      delay = Number(delay) || 0;
+      let safe = true;
+      const debounced = (...args) => {
+        if (safe) {
+          fn.apply(this, args)
+          safe = false
+          setTimeout(() => {
+            safe = true;
+          }, delay)
+        }
+      }
+      return debounced
+    }
+    const fn = throttle(function(...args) {
+      console.log(args)
+    }, 1000)
+
+    document.getElementById("btn").addEventListener('click', () => {
+      fn({ a: 1 })
+    })
+
+    function doFn () {
+      let count = 0;
+      let timer;
+      timer = setInterval(() => {
+        if (count < 100) {
+          fn(count)
+          count++;
+        } else {
+          clearInterval(timer)
+        }
+      }, 50);
+    }
+    // doFn()
+    
+    
+    function flat(array, result) {
+      for(let i = 0; i < array.length; i++) {
+        if (Array.isArray( array[i])) {
+          array = Array.prototype.concat.apply(array, array[i])
+          array[i] = null
+        }
+      }
+      return array.filter(item => item !== null)
+    }
+
+    const a = flat([1,[2,3], [1, [1, [1, [4]]]],[4,[5,[6,7,[8, [9,10,[10,123]]]]]]])
+    console.log(a)
+  </script>
+</body>
+</html>

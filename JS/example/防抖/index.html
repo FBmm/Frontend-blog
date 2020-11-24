@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn">点击</button>
+  </div>
+  <script>
+    // 防抖函数：在事件触发 n 秒后执行回调，如果在 n 秒内又被触发，则重新计时
+    function debounce(fn, delay, immidiate) {
+      if (typeof fn !== 'function') {
+        throw new Error("Expected a function")
+      }
+      delay = Number(delay) || 0;
+      let timeout = null;
+      const debounced = (...args) => {
+        if (!immidiate) {
+          if (timeout) clearTimeout(timeout)
+          timeout = setTimeout(() => {
+            fn.apply(this, args)
+          }, delay)
+        } else {
+          if (timeout === null) {
+            fn.apply(this, args)
+          }
+          if (timeout) clearTimeout(timeout)
+          timeout = setTimeout(() => {
+            timeout = null;
+          }, delay)
+        }
+      }
+      return debounced
+    }
+    const fn = debounce(function(...a) {
+      console.log(a)
+    }, 500, true)
+    document.getElementById("btn").addEventListener('click', () => {
+      fn({ a: 1 })
+    })
+  </script>
+</body>
+</html>
