@@ -11,33 +11,102 @@
   </div>
   <script>
     // 防抖函数：在事件触发 n 秒后执行回调，如果在 n 秒内又被触发，则重新计时
-    function debounce(fn, delay, immidiate) {
-      if (typeof fn !== 'function') {
-        throw new Error("Expected a function")
-      }
-      delay = Number(delay) || 0;
-      let timeout = null;
-      const debounced = (...args) => {
-        if (!immidiate) {
-          if (timeout) clearTimeout(timeout)
-          timeout = setTimeout(() => {
-            fn.apply(this, args)
-          }, delay)
-        } else {
-          if (timeout === null) {
-            fn.apply(this, args)
-          }
-          if (timeout) clearTimeout(timeout)
-          timeout = setTimeout(() => {
-            timeout = null;
-          }, delay)
+    // function debounce(fn, delay, immidiate) {
+    //   if (typeof fn !== 'function') {
+    //     throw new Error("Expected a function")
+    //   }
+    //   delay = Number(delay) || 0;
+    //   let timeout = null;
+    //   const debounced = (...args) => {
+    //     if (!immidiate) {
+    //       if (timeout) clearTimeout(timeout)
+    //       timeout = setTimeout(() => {
+    //         fn.apply(this, args)
+    //       }, delay)
+    //     } else {
+    //       if (timeout === null) {
+    //         fn.apply(this, args)
+    //       }
+    //       if (timeout) clearTimeout(timeout)
+    //       timeout = setTimeout(() => {
+    //         timeout = null;
+    //       }, delay)
+    //     }
+    //   }
+    //   return debounced
+    // }
+
+    
+    function debounce(fn, delay, options = {}) {
+
+      if (typeof fn !== 'function') throw new Error("fn expected a function")
+      if (Object.prototype.toString.call(options) !== "[object Object]") throw new Error("options expected a object")
+
+      delay = Number(delay) || 0
+
+      const { leading = false, trailing = true, isThrottle = false } = options
+
+      let timer;
+      let lastExecTime;
+
+      let delayFinish = true;
+
+      function clearTimer() {
+        if (timer) {
+          clearTimeout(timer)
         }
       }
+
+      const debounced = (...args) => {
+
+        function execFn (args) {
+          lastExecTime = Date.now()
+          fn.apply(this, args)
+        }
+
+        const diff = Date.now() - lastExecTime
+        console.log(diff)
+
+        if (!isThrottle) {
+          clearTimer(timer)
+          if (leading && !timer) {
+            execFn(args)
+          }
+          timer = setTimeout(() => {
+            leading ? timer = undefined : execFn(args);
+            if (leading && trailing ) {
+              execFn(args)
+            }
+          }, delay);
+        }  
+        
+        if (isThrottle && delayFinish) {
+          execFn(args)
+          delayFinish = false
+          timer = setTimeout(() => {
+            delayFinish = true
+          }, delay)
+        }
+
+        if (trailing) {
+          if (diff < delay) {
+            clearTimer(timer)
+            timer = setTimeout(() => {
+              execFn(args)
+            }, delay - diff)
+          }
+        }
+      }
+
       return debounced
     }
+
     const fn = debounce(function(...a) {
       console.log(a)
-    }, 500, true)
+    }, 1000, {
+      leading: true,
+      isThrottle: false,
+    })
     document.getElementById("btn").addEventListener('click', () => {
       fn({ a: 1 })
     })

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn">点击</button>
+  </div>
+  <script>
+    // 基础防抖
+    function debounce(fn, delay) {
+      delay = Number(delay) || 0;
+      let timer;
+      const debounced = (...args) => {
+        timer && clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.apply(this, args)
+        }, delay)
+      }
+      return debounced
+    }
+
+    // 立即执行防抖
+    function debounceLead(fn, delay) {
+      delay = Number(delay) || 0;
+      let timer;
+      const debounced = (...args) => {
+        if (!timer) {
+          fn.apply(this, args)
+        }
+        timer && clearTimeout(timer)
+        timer = setTimeout(() => {
+          timer = undefined
+        }, delay)
+      }
+      return debounced
+    }
+
+    // 立即执行且最后一次执行
+    function debounceLeadTrail(fn, delay) {
+      delay = Number(delay) || 0;
+      let timer;
+      const debounced = (...args) => {
+        if (!timer) {
+          fn.apply(this, args)
+        }
+        timer && clearTimeout(timer)
+        timer = setTimeout(() => {
+          timer = undefined
+          fn.apply(this, args)
+        }, delay)
+      }
+      return debounced
+    }
+
+    // 基础节流
+    function throttle(fn, delay) {
+      delay = Number(delay) || 0;
+      let delayOk = true;
+      const debounced = (...args) => {
+        if (delayOk) {
+          fn.apply(this, args)
+          delayOk = false
+          setTimeout(() => {
+            delayOk = true
+          }, delay)
+        }
+      }
+      return debounced
+    }
+
+    // 节流可最后一次执行
+    function throttleTrail(fn, delay) {
+      let timer
+      let last = 0 // fn 上次调用时间
+      const debounced = (...args) => {
+        // 调用 fn，重置上次调用 fn 时间
+        function execFn() {
+          fn.apply(this, args)
+          last = Date.now()
+        }
+        timer && clearTimeout(timer) // debounced 调用前清空定时器
+        const diff = Date.now() - last // 本次调用 debounced 距上次调用 fn 的间隔
+        if (diff > delay) { // 如果调用间隔超过 delay
+          execFn() // 调用 fn, 重置上次调用 fn 时间
+        } else {
+          // 如果间隔小于等于 delay，重置定时器和定时器延迟时间
+          // 因为要保证本次调用是在距上次 delay 毫秒后调用 , 则本次延时时间为 delay - diff
+          timer = setTimeout(() => {
+            execFn()
+          }, delay - diff)
+        }
+      }
+      return debounced
+    }
+
+    const fn = throttleTrail(function(...args) {
+      console.log(args)
+    }, 1000)
+
+    document.getElementById("btn").addEventListener('click', () => {
+      fn({ a: 1 })
+    })
+
+    function doFn () {
+      let count = 0;
+      let timer;
+      timer = setInterval(() => {
+        if (count < 100) {
+          fn(count)
+          count++;
+        } else {
+          clearInterval(timer)
+        }
+      }, 50);
+    }
+    // doFn()
+    
+  </script>
+</body>
+</html>
