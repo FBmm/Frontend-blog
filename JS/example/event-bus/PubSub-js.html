@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PubSub-js</title>
+  <script src="https://unpkg.com/pubsub-js"></script>
+</head>
+<body>
+  <script>
+
+    const fn = (a) => {
+      return (...args) => {
+        console.log(a, args)
+      }
+    }
+    // var token = PubSub.subscribe('MY TOPIC', fn);
+    
+    // PubSub.unsubscribe(fn);
+
+    // PubSub.publish('MY TOPIC', 'hello world!');
+    // PubSub.publish('MY TOPIC', 'hello world1!');
+
+    // console.log(token)
+
+    PubSub.subscribe('a', fn(1));
+    PubSub.subscribe('a.b', fn(2));
+    PubSub.subscribe('a.b.c', fn(3));
+    PubSub.unsubscribe('a.b.c');
+    PubSub.publish('a.b.c', 'hello world1!');
+    
+  </script>
+</body>
+</html>

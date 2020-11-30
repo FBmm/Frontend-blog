@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event-bus</title>
+</head>
+
+<body>
+  <script>
+    function EventBus() {
+      const messagesMap = new Map();
+      let _tid = -1;
+
+      this.$on = function (topic, fn) {
+        if (typeof fn !== "function") return false
+
+        let message
+        if (!messagesMap.has(topic)) {
+          message = {}
+        } else {
+          message = messagesMap.get(topic)
+        }
+
+        const token = 'uid_' + String(++_tid)
+        message[token] = fn
+        messagesMap.set(topic, message)
+
+        return token
+      }
+
+      this.$emit = function (topic, ...data) {
+        if (!messagesMap.has(topic)) throw new Error("The topic does not exist!" + topic);
+
+        const message = messagesMap.get(topic)
+
+        Object.values(message).forEach(fn => fn(...data))
+      }
+
+      this.$getMessages = function () {
+        return messagesMap
+      }
+
+      this.$off = function (topic) {
+        return messagesMap.delete(topic)
+      }
+    }
+
+    const eventBus = new EventBus()
+
+    eventBus.$on("a", (...args) => console.log(...args))
+
+    eventBus.$emit("a", "hello world", 1, 2) // hello world 1 2
+  </script>
+</body>
+
+</html>
