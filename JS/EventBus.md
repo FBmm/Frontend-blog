@@ -100,6 +100,13 @@ function EventBus() {
     Object.values(message).forEach(fn => fn(...data)) // 执行队列的所有回调函数
   }
 
+  // 异步发布 topic
+  this.$emitSync = function (topic, ...data) {
+    setTimeout(() => {
+      this.$emit(topic, ...data)
+    })
+  }
+
   this.$getMessages = function () {
     return messagesMap
   }
@@ -112,7 +119,9 @@ function EventBus() {
 
 const eventBus = new EventBus()
 
-eventBus.$on("a", (...args) => console.log(...args))
+eventBus.$on("a", (...args) => console.log('订阅1th', ...args))
+eventBus.$on("a", (...args) => console.log('订阅2th', ...args))
 
-eventBus.$emit("a", "hello world", 1, 2) // hello world 1 2
+eventBus.$emitSync("a", "异步消息") // hello world 1 2
+eventBus.$emit("a", "同步消息") // hello world 1 2
 ```
