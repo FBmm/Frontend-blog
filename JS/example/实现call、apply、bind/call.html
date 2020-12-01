@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call</title>
+</head>
+<body>
+  <script>
+    const newThis = {
+      name: "newThis"
+    }
+
+    function a() {
+      console.log(this)
+      console.log(arguments)
+    }
+    
+    Function.prototype.myCall = function(scope, ...args) {
+      scope.$fn = this
+      scope.$fn(...args)
+      delete scope.$fn
+    }
+
+    a.myCall(newThis, 1,2,3,4)
+  </script>
+</body>
+</html>

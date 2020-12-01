@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bind</title>
+</head>
+<body>
+  <script>
+    Function.prototype.myCall = function(scope, ...args) {
+      scope.$fn = this
+      scope.$fn(...args)
+      delete scope.$fn
+    }
+    Function.prototype.myBind = function(scope, ...args) {
+      return () => {
+        this.myCall(scope, ...args)
+      }
+    }
+
+    const newT = {
+      name: "newT"
+    }
+    function testFn() {
+      console.log(this)
+      console.log(arguments)
+    }
+    const binded = testFn.myBind(newT, [1,2,3])
+    console.log(binded)
+  </script>
+</body>
+</html>
