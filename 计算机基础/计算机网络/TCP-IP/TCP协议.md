@@ -20,6 +20,8 @@ TCP 用三次握手过程创建一个连接，客户端发送 SYN 连接请求�
   2. 服务器收到合法的 SYN 请求报文后，回应一个 SYN（seq=B）/ACK（ACK=A+1）包，进入 SYN_RECV 状态。ACK 的确认码是 A + 1，B 是 SYN/ACK 包本身携带的一个随机序号。
   3. 客户端收到 SYN/ACK 请求报文后，回应一个 ACK（ACK=B+1）包，该包的序号被设定为 A+1，而 ACK 的确认码则为 B+1。当服务器确认后，则表示TCP连接已建立，客户端进入ESTABLISHED状态。
 
+<img style="display: block; margin: 0 auto;" src="./assets/three-way-handshake.png" alt="" />
+
 > 为什么还要发送一次确认过程？
 > 主要是防止已失效的客户端连接请求又传送到了服务端，从而产生错误。
 
