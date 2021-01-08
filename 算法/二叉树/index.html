@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./index.js"></script>
+  <script src="./practice.js"></script>
+  <script>
+    const bst = new BST()
+    // const array = [10, 8, 4, 9, 2, 0]
+    // const array = [1,2,2,3,3,null,null,4,4]
+    array.forEach(item => bst.insert(item))
+    // bst.insert(10)
+    // bst.insert(8)
+    // bst.insert(6)
+    // bst.insert(15)
+    // bst.insert(11)
+    console.log(bst)
+    bst.postOrder(bst.root)
+  </script>
+</body>
+</html>

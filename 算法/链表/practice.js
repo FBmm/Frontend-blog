@@ -112,7 +112,7 @@ var mergeTwoLists = function(l1, l2) {
       return l2;
   }
 };
-const res = mergeTwoLists(tranform([1,3,4]), tranform([2,4,5]))
+// const res = mergeTwoLists(tranform([1,3,4]), tranform([2,4,5]))
 // console.log(res)
 ////////////////////////////////////////////////////////////////////////
 
@@ -126,3 +126,39 @@ const res = mergeTwoLists(tranform([1,3,4]), tranform([2,4,5]))
 
 // console.log(fn(3))
 
+var getIntersectionNode = function(headA, headB) {
+  if (!headA || headA.next == null) return null
+  const list = []
+  let c = headA;
+  list.push(c)
+  while(c.next) {
+    list.push(c.next)
+    c = c.next
+  }
+  if (!headB || headB.next == null) return null
+  let cc = headB
+  if (list.includes(cc)) {
+    return cc
+  }
+  while(cc.next) {
+    if (list.includes(cc.next)) {
+      return cc.next
+    }
+    cc = cc.next
+  }
+  return null
+};
+const a = {a:1}
+var res = getIntersectionNode(tranform([{},{},{}, a]), tranform([{},{},a, {}]))
+console.log(res)
+
+for(let i = 0; i < 3; i++) {
+  console.log('i', i)
+  for(let j = 0; j < 2; j++) {
+    if (j ===2 ) {
+      break
+    }
+    console.log('j', j)
+  }
+  
+}
