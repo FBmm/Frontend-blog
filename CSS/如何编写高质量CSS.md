@@ -71,6 +71,10 @@ BEM 命名是目前推荐的比较主流的命名规范。
   - 参考值：disabled、active、selected、checked、highlight、fixed、size-big、size-small、color-yellow、bg-blue等等。
   - 在必要时可进行扩展，书写成：`block__elem_modifier_modifier`，第一个`modifier`表示其命名空间。
 
+注意：
+
+- BEM 命名原则上嵌套不会超过两层。
+
 示例：
 
 demo
@@ -354,6 +358,38 @@ bad - 使用绝对定位 计算 top
 ### overflow-x: hidde 和 overflow-y: auto 同时存在
 
 ​	当 overflow-x: hidde 时， overflow-y 默认为 auto，则 overflow-y: auto 可以省略。
+
+### 使用 scss 嵌套的层级很深
+
+如果出现嵌套层级很深的情况，可以考虑布局能否优化，命名是否规范或者能否改成 BEM 命名。
+
+```scss
+/* bad */
+.box {
+    .left {
+        .top {} 
+    }
+    .right {
+       .nav {}
+       .content {
+           .header {}
+           .middle {}
+           .footer {}
+       } 
+	} 
+}
+```
+
+```scss
+/* good */
+.box-left__top {}
+.box-right__nav {}
+.box-right-content__header {}
+.box-right-content__middle {}
+.box-right-content__footer {}
+```
+
+
 
 ## 参考
 
