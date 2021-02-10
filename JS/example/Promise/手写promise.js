@@ -48,7 +48,7 @@ MyPromise.prototype.then = function (onResolved, onRejected) {
   // 如果类型不是函数需要忽略，同时也实现了透传
   // Promise.resolve(4).then().then((value) => console.log(value))
   onResolved = typeof onResolved === 'function' ? onResolved : v => v;
-  onRejected = typeof onRejected === 'function' ? onRejected : r => throw r;
+  onRejected = typeof onRejected === 'function' ? onRejected : r => { throw r };
 
     if (self.currentState === RESOLVED) {
       return (promise2 = new MyPromise(function (resolve, reject) {
