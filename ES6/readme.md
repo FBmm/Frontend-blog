@@ -1,5 +1,21 @@
 # ES6
 
+## 发展历程
+
+2015.6.17 日发布，是 ECMAScript 的第六个版本，所以被广泛称为 ES6 或者是 ES2015。
+
+## 版本特性
+
+变量声明、作用域、箭头函数、参数扩展、字符串扩展、对象扩展、数组扩展、解构赋值、模块化、class 类语法、Symbol 类型、Iterators、Generators、Map 和 Set、Promises、元编程（Proxy、Reflect）、国际化
+
+[版本特性](http://es6-features.org/#Constants)
+
+## 浏览器支持
+
+[浏览器兼容表](http://kangax.github.io/compat-table/es6/)
+
+[浏览器运行](https://babeljs.io/en/setup) ：需要使用 babel 转义。
+
 ## 变量
 
 - 声明变量
@@ -189,3 +205,54 @@ const { stat, exists, readFile } = require('fs');
 
 ES6模块化从fs模块加载三个方法，其他方法不加载，这种加载称为静态加载，静态加载可以通过代码静态分析工具和 tree shaking 优化资源。
 而CommonJS是加载整个模块，生成一个对象，再从对象上读取三个方法。这种方式称为运行时加载。
+
+## Proxy
+
+Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
+
+### 为什么要提供 Proxy ？
+
+1. Proxy 可以创建一个对象的代理，主要是为了实现对对象操作的拦截。
+
+基本用法
+```js
+const target = {
+    name: 'wuqian',
+    age: '28',
+}
+const p = new Proxy(target, {
+    get(tar, key, proxy) {
+        console.log(tar === target) // true
+        console.log(proxy === p) // true
+        console.log(arguments)
+      return tar[key]
+    },
+    set(tar, key, value, proxy) {
+      console.log(arguments)
+      return value
+    }
+})
+```
+以上的用法就实现了 Proxy 对目标对象所有属性的拦截，对比 es5 的 Object.definedProperty()，Object.definedProperty() 则是修改目标对象属性的描述类型，进而实现比如对 getter 和 setter 的拦截，而 Proxy 拦截的目标则是整个目标对象而非属性。
+
+注意点：
+1. Proxy 不支持深层对象拦截。
+```js
+const target = {
+    name: 'wuqian',
+    age: '28',
+    child: {
+        name: 'unknown',
+        age: null
+    }
+}
+const p = new Proxy(target, {
+  get(tar, key, proxy) {
+    console.log(key) // child
+  },
+})
+
+p.child.name // VM1068:1 Uncaught TypeError: Cannot read property 'name' of undefined
+```
+
+### Proxy 与 元编程
