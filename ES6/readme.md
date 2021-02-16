@@ -187,7 +187,9 @@ function fn() {
 - 语法上，是一种状态机
 - 形式上，是一个普通函数
 
-### Genetator 把异步操作变为同步执行
+### Generator 异步操作与同步执行
+
+下面代码，首先声明一个 generator 函数 gen，目的是让第一个 yield 语句返回 Promise 的结果，再同步打印结果。
 
 ```js
 function* gen() {
@@ -211,8 +213,6 @@ function asyncFn() {
 const res = g.next()
 console.log(res)
 ```
-
-上面代码，首先声明一个 generator 函数 gen，目的是让第一个 yield 语句返回 Promise 的结果，再同步打印结果。
 
 #### 问题一：result 如何同步接收 Promise 结果？
 
@@ -277,7 +277,7 @@ console.log(p) // Uncaught ReferenceError: Cannot access 'p' before initializati
 所以，在正常的函数中这种调用方式是不能正常执行的，但是 generator 函数，其实返回的是一个迭代器对象，`const g = gen()` 这个语句并不会立即执行函数，
 而是第一个 g.next() 方法执行后，才开始执行 gen 函数，所以当函数执行时，g 对象其实已经被创建，所以 generator 函数执行时总是可以获取实例 g 也就是迭代器对象的内存。
 
-通过 chrome 浏览器调试可以看到作用域中存在 g
+通过 chrome 浏览器调试可以看到作用域中存在 g 对象
 
 ![img.png](../Assets/source-3.png)
 
