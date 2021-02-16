@@ -171,6 +171,100 @@ function fn() {
 - 语法上，是一种状态机
 - 形式上，是一个普通函数
 
+### Genetator 把异步操作变为同步执行
+
+```js
+function* gen() {
+  console.log('starting')
+  const result = yield asyncFn().then(value => {
+    g.next(value)
+  })
+  console.log('end:', result) // 1s后打印 end: promise value
+}
+
+const g = gen();
+
+function asyncFn() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('promise value')
+    }, 1000)
+  })
+}
+
+const res = g.next()
+console.log(res)
+```
+
+上面代码，首先声明一个 generator 函数 gen，目的是让第一个 yield 语句返回 Promise 的结果，再同步打印结果。
+
+#### 问题一：result 如何同步接收 Promise 结果？
+
+这个问题其实是 yield 语句返回值的问题。先看一段简单的代码。
+
+```js
+function* gen() {
+    console.log('start')
+    const result = yield 1
+    console.log(result)
+}
+const g = gen()
+console.log(g.next()) // {value: 1, done: false}
+console.log(g.next()) // {value: undefined, done: true}
+```
+
+gen() 返回的是一个迭代器对象，表示 gen 函数的代码并不会立即执行，而是在调用 next() 方法后开始执行。
+所以，我们可以看到在调用 g.next() 方法后，先打印 start，此时 g.next() 的返回值是 {value: 1, done: false}，所以 yield 语句后面的值并不是
+`const result = yield 1` result 的值，而是迭代器 next() 方法的返回值。而 yield 语句则会暂停后面语句的执行。
+最后，第二次调用 g.next() 方法，执行剩余的语句，返回 {value: undefined, done: true}， value 是 return 语句返回值，由于此时没有声明 return 语句，所以默认值是 undefined。
+done 表示 generator 函数执行结束。
+
+再看一段关于 next() 方法参数的代码 
+
+```js
+function* gen() {
+    console.log('start')
+    const result = yield 1
+    console.log(result) // do
+}
+const g = gen()
+console.log(g.next()) // 开始执行
+console.log(g.next('do'))
+```
+
+由上面代码看出，第二个 next 放的参数是第一个 yield 语句的返回值，这是由于第一个 next 方法表示开始执行，而第二个 next 方法才继续执行第一个 yield 后的语句。
+
+所以回到最开始的代码，result 其实是通过 next 方法接收 Promise 执行结果。
+
+```js
+const result = yield asyncFn().then(value => {
+  g.next(value)
+})
+```
+
+待 asyncFn 方法变成 resolve 状态，使用 then 接受 value，通过 `g.next(value)` 继续执行 gen 函数。如此，Generator 把异步操作变成了同步执行。
+
+#### 问题二：为什么 gen 函数中可以访问实例 g 调用 g.next()
+
+首先我们看看 js 构造函数的调用
+
+p 引用错误
+```js
+function P() {
+    console.log(p)
+}
+
+const p = new P()
+console.log(p) // Uncaught ReferenceError: Cannot access 'p' before initialization
+```
+
+所以，在正常的函数中这种调用方式是不能正常执行的，但是 generator 函数，其实返回的是一个迭代器对象，`const g = gen()` 这个语句并不会立即执行函数，
+而是第一个 g.next() 方法执行后，才开始执行 gen 函数，所以当函数执行时，g 对象其实已经被创建，所以 generator 函数执行时总是可以获取实例 g 也就是迭代器对象的内存。
+
+通过 chrome 浏览器调试可以看到作用域中存在 g
+
+![img.png](../Assets/source-3.png)
+
 ## 模块化 import、export
 
 - ES6之前，有两种模块化加载方案：CommonJS、AMD

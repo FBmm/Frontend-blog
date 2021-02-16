@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator</title>
+</head>
+<body>
+  <script>
+    function* gen() {
+      console.log('starting')
+      const result = yield asyncFn().then(value => {
+        g.next(value)
+      })
+      console.log('end:', result)
+    }
+
+    const g = gen();
+
+
+    function asyncFn() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('promise value')
+        }, 1000)
+      })
+    }
+
+    const res = g.next()
+    console.log(res)
+  </script>
+</body>
+</html>
