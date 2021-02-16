@@ -13,8 +13,9 @@
       delete scope.$fn
     }
     Function.prototype.myBind = function(scope, ...args) {
-      return () => {
-        this.myCall(scope, ...args)
+      const self = this
+      return (...params) => {
+        self.myCall(scope, ...args, ...params)
       }
     }
 
@@ -25,8 +26,8 @@
       console.log(this)
       console.log(arguments)
     }
-    const binded = testFn.myBind(newT, [1,2,3])
-    console.log(binded)
+    binded = testFn.myBind(newT, [1,2,3], 'a', 'b')
+    console.log(binded(4,4,5))
   </script>
 </body>
 </html>

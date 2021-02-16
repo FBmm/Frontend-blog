@@ -101,3 +101,25 @@ function LinkedList() {
     }
   }
 }
+
+function Node(el) {
+  this.val = el
+  this.next = null
+}
+
+function tranform(arr) {
+  let linkedList;
+  let last;
+  arr.forEach(item => {
+    if (!linkedList) {
+      linkedList = last = new Node(item)
+    } else {
+      last = last.next = new Node(item)
+    }
+  })
+  return linkedList
+}
+
+// const linkedList = tranform([4,5,1,9]) // 5 1 2 3 4
+
+// console.log('linkedList', linkedList)
