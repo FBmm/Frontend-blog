@@ -304,7 +304,7 @@ ES6模块化从fs模块加载三个方法，其他方法不加载，这种加载
 
 ## Proxy
 
-Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
+Proxy 可以创建一个对象的代理，主要用于对代理对象基本操作的拦截和自定义。
 
 ### 为什么要提供 Proxy ？
 
@@ -351,4 +351,21 @@ const p = new Proxy(target, {
 p.child.name // VM1068:1 Uncaught TypeError: Cannot read property 'name' of undefined
 ```
 
-### Proxy 与 元编程
+### Proxy 支持的操作
+
+Reflect 提供拦截 JavaScript 操作的方法。
+
+以下是13个 Reflect 对象支持的 api
+- Reflect.apply()
+- Reflect.construct()
+- Reflect.definedProperty()
+- Reflect.deleteProperty()
+- Reflect.get()
+- Reflect.getOwnPropertyDescriptor()
+- Reflect.getOwnPrototypeOf()
+- Reflect.has()
+- Reflect.isExtensible()
+- Reflect.ownKeys()
+- Reflect.preventExtensions()
+- Reflect.set()
+- Reflect.setPrototypeOf()
