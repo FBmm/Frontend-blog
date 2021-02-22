@@ -396,7 +396,7 @@ Promise.race
 Promise.any
   - 返回 p1,p2,p3 状态最先变成的 fulfilled 实例的 value，如果 p1,p2,p3 最终状态都是 reject 则返回 All promises were rejected。
 
-[执行的对比代码](Promise/example/Promise-method.html)
+[测试代码](Promise/example/Promise-method.html)
 ```js
 const p1 = new Promise((resolve, reject) => {
     setTimeout(() => {
