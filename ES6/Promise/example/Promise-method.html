@@ -31,7 +31,7 @@
     Promise.all([p1, p2, p3]).then(res => {
         console.log('Promise.all', res)
     }).catch(e => {
-        console.log(e)
+        console.log('Promise.all', e) // Promise.all error
     })
 
     /**
@@ -45,9 +45,9 @@
      * ]
      */
     Promise.allSettled([p1, p2, p3]).then(res => {
-        console.log('Promise.allSettled', res)
+        console.log('Promise.allSettled', res) // 输出如注释
     }).catch(e => {
-        console.log(e)
+        console.log('Promise.allSettled', e)
     })
 
     /**
@@ -57,7 +57,7 @@
     Promise.race([p1, p2, p3]).then(res => {
         console.log('Promise.race', res)
     }).catch(e => {
-        console.log(e)
+        console.log('Promise.race', e) // Promise.race error
     })
 
     /**
@@ -65,10 +65,16 @@
      * 返回 p1,p2,p3 状态最先变成的 fulfilled 实例的 value，如果 p1,p2,p3 最终状态都是 reject 则返回 All promises were rejected。
      */
     Promise.any([p1, p2, p3]).then(res => {
-        console.log('Promise.any', res)
+        console.log('Promise.any', res) // Promise.any 1
     }).catch(e => {
-        console.log(e)
+        console.log('Promise.any', e)
     })
+
+    // 输出顺序
+    // Promise.all error
+    // Promise.race error
+    // Promise.any 1
+    // Promise.allSettled [...]
 </script>
 </body>
 </html>
