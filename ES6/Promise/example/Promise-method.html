@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise-method</title>
+</head>
+<body>
+<script>
+    const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1)
+        }, 1000)
+    })
+    const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('error')
+        }, 500)
+    })
+    const p3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(2)
+        }, 1500)
+    })
+
+    /**
+     * Promise.all
+     * 返回所有 Promise(p1,p2,p3) 实例的新 Promise
+     * 当所有 Promise 实例都变成 fulfilled 状态，新 Promise 的状态才是 fulfilled 状态，返回所有 promise 实例的 resolve value 数组。
+     * 如果有一个 Promise 实例状态是 rejected 状态，则新 Promise 的状态是 rejected，返回第一个 promise reject 的 reason。
+     */
+    Promise.all([p1, p2, p3]).then(res => {
+        console.log('Promise.all', res)
+    }).catch(e => {
+        console.log(e)
+    })
+
+    /**
+     * Promise.allSettled
+     * 返回所有 Promise(p1,p2,p3) 实例的新 Promise
+     * 返回所有 Promise 实例执行结果数组，格式如下
+     * [
+     *  {status: "fulfilled", value: 1},
+     *  {status: "rejected", reason: "error"},
+     *  {status: "rejected", reason: 2},
+     * ]
+     */
+    Promise.allSettled([p1, p2, p3]).then(res => {
+        console.log('Promise.allSettled', res)
+    }).catch(e => {
+        console.log(e)
+    })
+
+    /**
+     * Promise.race
+     * 返回 p1,p2,p3 最先执行的 Promise 实例的 value 或者 reason，不论 fulfilled 或 rejected 状态。
+     */
+    Promise.race([p1, p2, p3]).then(res => {
+        console.log('Promise.race', res)
+    }).catch(e => {
+        console.log(e)
+    })
+
+    /**
+     * Promise.any
+     * 返回 p1,p2,p3 状态最先变成的 fulfilled 实例的 value，如果 p1,p2,p3 最终状态都是 reject 则返回 All promises were rejected。
+     */
+    Promise.any([p1, p2, p3]).then(res => {
+        console.log('Promise.any', res)
+    }).catch(e => {
+        console.log(e)
+    })
+</script>
+</body>
+</html>

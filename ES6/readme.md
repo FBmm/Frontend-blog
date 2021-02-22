@@ -369,3 +369,31 @@ Reflect 提供拦截 JavaScript 操作的方法。
 - Reflect.preventExtensions()
 - Reflect.set()
 - Reflect.setPrototypeOf()
+
+## Promise
+
+### Promise.all、Promise.allSettled、Promise.race、Promise.any 区别
+
+Promise.all
+  - 返回所有 Promise(p1,p2,p3) 实例的新 Promise。 
+  - 当所有 Promise 实例都变成 fulfilled 状态，新 Promise 的状态才是 fulfilled 状态，返回所有 promise 实例的 resolve value 数组。
+  - 如果有一个 Promise 实例状态是 rejected 状态，则新 Promise 的状态是 rejected，返回第一个 promise reject 的 reason。
+
+Promise.allSettled
+  - 返回所有 Promise(p1,p2,p3) 实例的新 Promise
+  - 返回所有 Promise 实例执行结果数组，格式如下
+```js
+[
+  {status: "fulfilled", value: 1},
+  {status: "rejected", reason: "error"},
+  {status: "rejected", reason: 2},
+]
+```
+
+Promise.race
+  - 返回 p1,p2,p3 最先执行的 Promise 实例的 value 或者 reason，不论 fulfilled 或 rejected 状态。
+
+Promise.any
+  - 返回 p1,p2,p3 状态最先变成的 fulfilled 实例的 value，如果 p1,p2,p3 最终状态都是 reject 则返回 All promises were rejected。
+
+[执行的对比代码](ES6/Promise/example/Promise-method.html)
