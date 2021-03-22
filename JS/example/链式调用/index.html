@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * js实现链式调用
+         * 计算所有参数的和，在最后一个参数为空时返回结果
+         *
+         * return: 1 + 2 + 3 + 0 = 6
+         */
+        function add(m) {
+            const fn = (n) => {
+                if (n == null) return m
+                m += n
+                return fn
+            }
+            return fn
+        }
+
+        const res = add(1)(2)(3)(0)()
+
+        console.log(res)
+    </script>
+</body>
+</html>
