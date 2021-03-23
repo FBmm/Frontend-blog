@@ -37,3 +37,16 @@ window.open("www.baidu.com") // <a href="//www.baidu.com" target="_blank">百度
 基本类型：以值得方式保存在栈中，复制变量时，会在栈中创建一个新值。
 
 引用类型：引用类型的值指保存在堆中的对象，堆中保存的其实是一个指针，指向内存中的另一个位置。具体指向哪里要看对象的数据类型，如果是基本类型则指向栈，如果是引用类型则指向堆，依此类推。复制变量时，复制的是内存的地址。
+
+## js异步机制
+
+### 1. console.log 打印
+
+```js
+const s = new Date()
+setTimeout(() => {
+    const e = new Date()
+    console.log(e - s) // > 1000
+}, 500)
+while (new Date() - s < 1000) {}
+```
