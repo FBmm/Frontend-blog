@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function P (fn) {
+      const fulfilledQueue = []
+      const rejectedQueue = []
+      this.PromiseStatus = 'panding';
+      this.PromiseValue = undefined;
+      const _self = this
+      P.prototype.then = function (onFulfilled, onRejected) {
+        if (this.PromiseStatus === 'resolved') {
+          fulfilledQueue.forEach(queue => queue(this.PromiseValue))
+          return
+        }
+        if (this.PromiseStatus === 'rejected') {
+          rejectedQueue.forEach(queue => queue(this.PromiseValue))
+          return
+        }
+        if (typeof onFulfilled === 'function') {
+          fulfilledQueue.push(onFulfilled)
+        }
+        if (typeof onRejected === 'function') {
+          rejectedQueue.push(onRejected)
+        }
+        return new P((resolve, reject) => {
+          setTimeout(() => {
+            resolve()
+          }, 1000)
+        })
+      }
+      P.prototype.catch = function (onRejected) {
+        if (typeof onRejected === 'function') {
+          rejectedQueue.push(onRejected)
+        }
+        return _self
+      }
+      const resolve = (val) => {
+        if (this.PromiseStatus !== 'panding') return
+        fulfilledQueue.forEach(queue => queue(val))
+        this.PromiseStatus = 'resolved'
+        this.PromiseValue = val
+      }
+      const reject = (reason) => {
+        if (PromiseStatus !== 'panding') return
+        rejectedQueue.forEach(queue => queue(reason))
+        this.PromiseStatus = 'rejected'
+        this.PromiseValue = reason
+      }
+      fn(resolve, reject)
+    }
+    
+    
+
+
+    const p = new P((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1)
+      }, 1000)
+    })
+
+    const aa = p.then((v1) => {
+      console.log('v1', v1)
+    })
+    
+    console.log(aa)
+    // aa.then((v1) => {
+    //   console.log('v2', v1)
+    // })
+  </script>
+</body>
+</html>
