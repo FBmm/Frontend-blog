@@ -17,3 +17,19 @@
 - 相同的软件包：？
 - 网络弹性：重试机制确保单个请求失败不会导致整个安装失败。
 - 扁平模式：将依赖包的不同版本归结为单个版本，避免创建多个副本。
+
+## 命令
+
+- yarn init 初始化 package.json
+  
+- yarn add 添加依赖
+    - yarn add <package>
+        安装依赖到 dependencies ，运行时代码依赖
+    - yarn add <package> [--dev/-D]
+        安装依赖到 devDependencies，开发环境工具，运行时代码不依赖
+    - yarn add <package> [--peer/-P]
+        安装依赖到 peerDependencies
+    - yarn add <package> [--optional/-O]
+        安装依赖到 optionalDependencies，可选依赖，安装失败时不会中断进程
+    - yarn add <package> [--bundled/-B]
+        安装依赖到 bundledDependencies，npm 注册表外的依赖
