@@ -6,7 +6,7 @@
 
 公司大佬曾经问过我两个问题记忆很深刻，没有知其所以然，所以回答可能有些牵强。为了寻找解释这两个问题的答案，由此开始了CSS学习之路。现在看来当时的回答只是强行解释。
 
-> 参阅的资料：《CSS世界》、[W3C层叠样式表规范](http://www.ayqy.net/doc/css2-1/cover.html#minitoc)、[MDN-CSS文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+> 参阅的资料：《CSS世界》、《CSS设计指南》、[W3C层叠样式表规范](http://www.ayqy.net/doc/css2-1/cover.html#minitoc)、[MDN-CSS文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
 两个问题
 1. 浮动脱离文档流吗？
@@ -19,9 +19,11 @@
 
 下面我们来研究CSS各种有趣的规则
 
-## CSS层叠
+## CSS机制和层叠机制
 
-层叠机制是css的基本工作机制，当元素的属性有多种样式值的时候，css就要靠层叠机制来决定最终应用哪种样式。
+CSS 机制是一种选择 HTML 元素，然后设定选中元素 CSS 属性的机制。 
+
+层叠机制是 CSS 的基本工作机制，当元素的属性有多种样式值的时候，CSS 就要靠层叠机制来决定最终应用哪种样式。
 
 ## 文档流
 
