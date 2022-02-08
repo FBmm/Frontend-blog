@@ -96,7 +96,7 @@ const initGraphChartOptions = (chartData) => {
 
 // 图表数据
 const getData = () => {
-  // 注：如果节点是圆形背景图片，图片必须使用 png 格式的圆行透明背景，eCharts label 无法处理图片
+  // 注：如果节点是圆形背景图片，图片必须使用 png 格式的圆行透明背景，ECharts label 无法处理图片
   const img = 'http://eqxiu-test-1251586368.picsh.myqcloud.com/material/video/6500e235c8994348ae27c486739d71f4/3733f1328ccd5bb81662c5ad52585dfc.jpeg?imageMogr2/format/png|imageMogr2/iradius/300'
   return {
     img,
