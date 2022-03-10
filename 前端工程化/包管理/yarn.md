@@ -22,6 +22,8 @@
 
 - yarn init 初始化 package.json
   
+- yarn / yarn install 安装依赖
+  
 - yarn add 添加依赖
     - yarn add <package>
         安装依赖到 dependencies ，运行时代码依赖
@@ -33,3 +35,5 @@
         安装依赖到 optionalDependencies，可选依赖，安装失败时不会中断进程
     - yarn add <package> [--bundled/-B]
         安装依赖到 bundledDependencies，npm 注册表外的依赖
+      
+- yarn remove 删除依赖

@@ -8,6 +8,60 @@
 
 ## 目录
 
+- javascript
+    - [dom](JS/dom/readme.md)
+    - [原型链](JS/原型链.md)
+    - [EventBus](JS/EventBus.md)
+    - [防抖和节流](JS/防抖和节流.md)
+    - [手写call、apply、bind](JS/手写call、apply、bind.md)
+    - [this对象](JS/this.md)
+    - [闭包](JS/闭包.md)
+
+- ES6
+    - [ES6总结](ES6/readme.md)
+    - [ES6 decorator](ES6/decorator.md)
+    - [Promise A+规范](ES6/Promise/readme.md)
+    - [手写Promise](ES6/Promise/Promise源码/src/promise.js)
+
+- Typescript
+    - [ts总结](Typescript/readme.md)
+
+- Vue
+    - [vuex总结](Vue/Vuex/readme.md)
+
+- Vue 源码
+    - [v2.0.0](Vue源码/v2.0.0/README.md)
+        - [入口 - index.js](Vue源码/v2.0.0/入口-index.js.md)
+        - [全局配置-config.js](Vue源码/v2.0.0/全局配置-config.js.md)
+    - [数组劫持之数组拦截器](Vue源码/数组方法拦截器/readme.md)
+        - [实现代码](Vue源码/数组方法拦截器/index.html)
+
+- 前端工程化
+    - [软件工程](前端工程化/软件工程.md)
+    - 包管理
+        - [前端包管理工具](前端工程化/包管理/前端包管理工具.md)
+        - [yarn](前端工程化/包管理/yarn.md)
+    - Webpack
+        - [Webpack学习](https://github.com/FBmm/webpack-learn)
+        - [Webpack总结](Webpack/readme.md)
+    - Eslint
+        - [Eslint学习](https://github.com/FBmm/eslint-learn)
+
+- 计算机基础
+    - 算法
+        - [链表](算法/链表)
+        - [递归](算法/递归)
+        - [排序](算法/排序)
+        - [二叉树](算法/二叉树)
+    - 数据结构
+        - [数据结构与算法](计算机基础/数据结构/数据结构与算法.md)
+        - [线性表](计算机基础/数据结构/线性表.md)
+    - [计算机网络](计算机基础/计算机网络/README.md)
+        - [TCP/IP基础](计算机基础/计算机网络/TCP-IP/TCP-IP基础.md)
+        - [TCP协议](计算机基础/计算机网络/TCP-IP/TCP协议.md)
+    - 设计模式
+        - [6原则和23模式简介](设计模式/6原则和23模式简介.md)
+
 - html
     - [html元素](HTML/html元素.md)
 
@@ -46,46 +100,11 @@
         - [min-width、min-height默认值测试](CSS/example/元素尺寸/min-width、min-height默认值测试.html)
         - [width-100%测试](CSS/example/元素尺寸/width-100%测试.html)
         
-- javascript
-    - [dom](JS/dom/readme.md)
-    - [原型链](JS/原型链.md)
-    - [EventBus](JS/EventBus.md)
-    - [防抖和节流](JS/防抖和节流.md)
-    - [手写call、apply、bind](JS/手写call、apply、bind.md)
-    - [this对象](JS/this.md)
-    - [闭包](JS/闭包.md)
-    
-- ES6
-    - [ES6总结](ES6/readme.md)
-    - [ES6 decorator](ES6/decorator.md)
-    - [Promise A+规范](ES6/Promise/readme.md)
-    - [手写Promise](ES6/Promise/Promise源码/src/promise.js)
-    
-- Typescript
-    - [ts总结](Typescript/readme.md)
-    
 - js 应用
     - [手写Promise](JS/Promise/手写promise.js)
     - [adEventListener、冒泡事件](example/dom操作/addEventListener.html)
     - [url替换为a标签](example/url替换为a标签/urlToElementA.html)
     - [JS examples](JS/example)
-    
-- Vue
-    - [vuex总结](Vue/Vuex/readme.md)
-    
-- Vue 源码
-    - [v2.0.0](Vue源码/v2.0.0/README.md)
-        - [入口 - index.js](Vue源码/v2.0.0/入口-index.js.md)
-        - [全局配置-config.js](Vue源码/v2.0.0/全局配置-config.js.md)
-    - [数组劫持之数组拦截器](Vue源码/数组方法拦截器/readme.md)
-        - [实现代码](Vue源码/数组方法拦截器/index.html)
-    
-- 前端工程化
-    - Webpack
-        - [Webpack学习](https://github.com/FBmm/webpack-learn)
-        - [Webpack总结](Webpack/readme.md)
-    - Eslint
-        - [Eslint学习](https://github.com/FBmm/eslint-learn)
     
 - git
     - [git命令](Git/readme.md)
@@ -103,20 +122,6 @@
     - [html](面试题/html.md)
     - [js](面试题/js.md)
     - [计算机基础](面试题/计算机基础.md)
-
-- 计算机基础
-    - 算法
-        - [链表](算法/链表)
-        - [递归](算法/递归)
-        - [排序](算法/排序)
-        - [二叉树](算法/二叉树)
-    - 数据结构
-        - [数据结构与算法](计算机基础/数据结构/数据结构与算法.md)
-        - [线性表](计算机基础/数据结构/线性表.md)
-    - [计算机网络](计算机基础/计算机网络/README.md)
-        - [TCP/IP基础](计算机基础/计算机网络/TCP-IP/TCP-IP基础.md)
-        - [TCP协议](计算机基础/计算机网络/TCP-IP/TCP协议.md)
-    - 设计模式
 
 - 数据库
     - [MongoDB](https://github.com/FBmm/Mongodb-blog)
