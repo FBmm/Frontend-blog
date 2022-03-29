@@ -1,6 +1,6 @@
 # 手写 call、apply、bind
 
-## 手写 call
+## call
 
 ```js
 // Function 原型实现 myCall
@@ -21,7 +21,7 @@ function testFn() {
 testFn.myCall(newThis, 1, 2, 3, 4)
 ```
 
-## 手写 apply
+## apply
 
 ```js
 // Function 原型实现 myCall
@@ -42,7 +42,7 @@ function testFn() {
 testFn.myApply(newThis, [1, 2, 3, 4])
 ```
 
-## 手写 bind
+## bind
 
 ```js
 Function.prototype.myBind = function(scope, ...args) {
