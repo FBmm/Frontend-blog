@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      
+      // 创建循环引用对象
+      const a = {};
+      const b = { b: a };
+      a.a = b;
+
+      // 深拷贝
+      function cloneDeep(obj) {
+        const map = new Map();
+        const _clone = (_obj) => {
+          if (typeof _obj !== "object" || _obj === null) {
+            return _obj;
+          }
+          if (map.has(_obj)) {
+            return map.get(_obj);
+          }
+          const newObj = Array.isArray(_obj) ? [] : {};
+          map.set(_obj, newObj);
+          for (let key in _obj) {
+            if (_obj.hasOwnProperty(key)) {
+              newObj[key] = _clone(_obj[key]);
+            }
+          }
+          return newObj;
+        };
+        return _clone(obj);
+      }
+
+      const newB = cloneDeep(b)
+      console.log(newB);
+      console.log(newB === b);
+    </script>
+  </body>
+</html>
